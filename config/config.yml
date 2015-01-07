@@ -1,0 +1,3 @@
+base:
+  auth_cookie_name: '_Etrain_Auth'
+  secret_key: 'U2lndWxhcml0eUNsdWJfRXRyYWlu=='
