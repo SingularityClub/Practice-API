@@ -1,4 +1,4 @@
-class Etrain < Grape::API
+class PracticeAPI < Grape::API
   include Grape::ActiveRecord::Extension
   prefix :api
   format :json
@@ -16,9 +16,9 @@ class Etrain < Grape::API
   require "#{__dir__}/tag_api"
   require "#{__dir__}/comment_api"
 
-  mount Etrain::UserApi => '/'
-  mount Etrain::ArticleApi => '/'
-  mount Etrain::TagApi => '/'
-  mount Etrain::CommentApi => '/'
+  mount PracticeAPI::UserApi => '/'
+  mount PracticeAPI::ArticleApi => '/'
+  mount PracticeAPI::TagApi => '/'
+  mount PracticeAPI::CommentApi => '/'
 
 end

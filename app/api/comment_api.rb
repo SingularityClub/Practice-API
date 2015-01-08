@@ -1,4 +1,4 @@
-class Etrain::CommentApi < Grape::API
+class PracticeAPI::CommentApi < Grape::API
   resources :comments do
     helpers ::ToolKit
 

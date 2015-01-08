@@ -1,4 +1,4 @@
-class Etrain::TagApi < Grape::API
+class PracticeAPI::TagApi < Grape::API
   resources :tags do
     get do
       Tag.all

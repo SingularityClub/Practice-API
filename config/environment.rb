@@ -9,7 +9,7 @@ $config = YAML::load(File.read(ROOT.join('config', 'config.yml')))
 
 Dir.glob(ROOT.join('app', 'models', '*.rb')).each { |file| require file }
 Dir.glob(ROOT.join('app', 'helpers', '*.rb')).each { |file| require file }
-require ROOT.join('app', 'api', 'etrain.rb')
+require ROOT.join('app', 'api', 'practice_api.rb')
 
 # Dir.glob(ROOT.join('app', 'api', '**', '*.rb')).each { |file| require file }
 

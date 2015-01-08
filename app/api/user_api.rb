@@ -1,4 +1,4 @@
-class Etrain::UserApi < Grape::API
+class PracticeAPI::UserApi < Grape::API
   format :json
   resources :users do
     helpers ::ToolKit
@@ -58,10 +58,11 @@ class Etrain::UserApi < Grape::API
       params do
         optional :name, type: String
         optional :email, type: String
+        optional :password, type: String
         optional :gender, type: Integer
       end
       put do
-
+        @user.update! params[:name], params[:email], params[:password], params[:gender]
       end
 
       desc '删除该用户'

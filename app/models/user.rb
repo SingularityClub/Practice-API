@@ -9,11 +9,11 @@ class User < ActiveRecord::Base
     self.as_json(only: [:username, :id, :name, :email, :gender])
   end
 
-  def update(name, email, password, gender)
+  def update!(name, email, password, gender)
     self.name, self.email, self.gender = name, email, gender
     change_password password if password
-
     self.save!
+    self
   end
 
   def change_password(password)

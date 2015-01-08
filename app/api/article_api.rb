@@ -1,4 +1,4 @@
-class Etrain::ArticleApi < Grape::API
+class PracticeAPI::ArticleApi < Grape::API
   resources :articles do
     helpers ::ToolKit
 
@@ -33,6 +33,8 @@ class Etrain::ArticleApi < Grape::API
       after_validation do
         @article = Article.find_by(id: params[:id])
       end
+
+      desc '获取某文章，并且让浏览数+1'
       get do
         return status(404) unless @article
 
@@ -63,6 +65,7 @@ class Etrain::ArticleApi < Grape::API
           end
         end
 
+        desc '添加一条评论'
         params do
           requires :content, type: String
           optional :account, type: Hash do
@@ -82,12 +85,15 @@ class Etrain::ArticleApi < Grape::API
           after_validation do
             @comment = Comment.find_by(id: params[:comment_id], enable: true)
           end
+
+          desc '删除该评论'
           delete do
             require_authorized!
 
             @comment.destroy!
           end
 
+          desc '禁用该评论'
           put do
             require_authorized!
 
