@@ -13,4 +13,4 @@ require ROOT.join('app', 'api', 'practice_api.rb')
 
 # Dir.glob(ROOT.join('app', 'api', '**', '*.rb')).each { |file| require file }
 
-Grape::ActiveRecord.database_file = ROOT.join('config', 'database.yml')
+Grape::ActiveRecord.database_file = "#{__dir__}/database.yml" # ROOT.join('config', 'database.yml')

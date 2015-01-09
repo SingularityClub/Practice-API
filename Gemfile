@@ -11,3 +11,9 @@ gem 'rack-cors', :require => 'rack/cors'
 # gem 'rack-contrib', git: 'https://github.com/sebglazebrook/rack-contrib.git'
 
 gem 'goliath', :require => false
+
+
+group :test, :development do
+  gem 'rack-test'
+  gem 'rspec'
+end
