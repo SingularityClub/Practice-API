@@ -9,6 +9,15 @@ module ToolKit
     data
   end
 
+  def paginate_result (data, count, start)
+    {
+        data: data,
+        count: count,
+        start: start,
+        end: start.to_i+data.count-1
+    }
+  end
+
   def require_authorized!
     error!({message: '请先登录后再试！'}.as_json, 403) unless @current_user
   end

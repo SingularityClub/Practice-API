@@ -29,7 +29,7 @@ class Article < ActiveRecord::Base
                  .order(created_at: :desc).offset(start).limit(length+1), Article.available.count
     end
 
-    def pagenate_for_tag(tag_name='', start=0, _end=100)
+    def paginate_for_tag(tag_name='', start=0, _end=100)
       length = _end - start
       length = 100 if length>100
       tag = Tag.find_by(title: tag_name)

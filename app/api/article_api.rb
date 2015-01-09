@@ -4,14 +4,15 @@ class PracticeAPI::ArticleApi < Grape::API
 
     desc '获取文章列表'
     get do
-      articles= paginate_anything do |start, _end|
-        if params[:tagname]
-          Article.pagenate_for_tag(params[:tagname], start, _end)
-        else
-          Article.paginate(start, _end)
-        end
+      start = params[:start]
+      _end = params[:end]
+      if params[:tagname]
+        articles, count=Article.paginate_for_tag(params[:tagname], start, _end)
+      else
+        articles, count=Article.paginate(start, _end)
       end
-      articles.as_json(include: {tags: {only: :title}, user: {only: [:id, :username, :name]}})
+
+      paginate_result articles, count, start
     end
 
     desc '添加文章'

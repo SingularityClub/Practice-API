@@ -15,7 +15,7 @@ class PracticeAPI::UserApi < Grape::API
       optional :gender, type: Integer
     end
     post :reg do
-      error! message: '私人博客，暂时不开放注册！'
+      # error! message: '私人博客，暂时不开放注册！'
       User.reg(params[:username], params[:password], params[:gender]).safe_attributes
     end
 
