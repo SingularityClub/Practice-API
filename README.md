@@ -19,24 +19,68 @@ API for SingularityClub
 ##API Document
 
 - Users
-    - POST `/api/users`  添加用户
+    - POST  `/api/users` 添加用户
 
     ```
         参数:
             username:string 用户名
             password:string 密码
-            gender:Integer [0:未知(default)，1:男，2:女] 性别
+            [gender:Integer [0:未知(default)，1:男，2:女]] 性别
             
         返回：
             用户实体
     ```
 
 
-    - POST `/api/users/login` 登录
+    - POST  `/api/users/login`   登录
     ```
         参数：
-
             username:string 用户名
             password:string 密码
+            
+        返回：
+            用户实体
+    ```
+    
+    - POST  `/api/users/logout`  注销
+    ```
+        无参数
+        无返回
+    ```
+    
+    - GET   `/api/users/current`  获取当前登录用户
+    ```
+        返回：
+            用户实体
+    ```
+    
+    - GET   `/api/users/:id`    获取特定id的用户
+    ```
+        参数：
+            id:integer   用户id 
+            
+        返回：
+            用户实体
     ```
 
+    - PUT   `/api/users/:id`    修改某特定id的用户
+    ```
+        参数：
+            id:integer  用户id
+            [name:string]   用户真实姓名
+            [email:string]  电子邮件地址
+            [password:string]   密码
+            [gender:integer]    性别
+        
+        返回：
+            用户实体
+    ```
+    
+    - DELETE `api/users/:id`    删除某用户
+    ```
+        参数：
+            id:integer 用户id
+    ```
+    
+    
+    
