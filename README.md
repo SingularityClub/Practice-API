@@ -19,7 +19,13 @@ API for SingularityClub
 ##API Document
 
 - Users
-    - POST  `/api/users` 添加用户
+    -   GET   `/api/users`    获取所有用户
+    ```
+        返回：
+            用户列表实体
+    ```
+
+    -   POST  `/api/users`    添加用户
     ```
         参数:
             username:string 用户名
@@ -31,7 +37,7 @@ API for SingularityClub
     ```
 
 
-    - POST  `/api/users/login`   登录
+    -   POST  `/api/users/login`   登录
     ```
         参数：
             username:string 用户名
@@ -41,19 +47,19 @@ API for SingularityClub
             用户实体
     ```
     
-    - POST  `/api/users/logout`  注销
+    -   POST  `/api/users/logout`  注销
     ```
         无参数
         无返回
     ```
     
-    - GET   `/api/users/current`  获取当前登录用户
+    -   GET   `/api/users/current`  获取当前登录用户
     ```
         返回：
             用户实体
     ```
     
-    - GET   `/api/users/:id`    获取特定id的用户
+    -   GET   `/api/users/:id`    获取特定id的用户
     ```
         参数：
             id:integer   用户id 
@@ -62,7 +68,7 @@ API for SingularityClub
             用户实体
     ```
 
-    - PUT   `/api/users/:id`    修改某特定id的用户
+    -   PUT   `/api/users/:id`    修改某特定id的用户
     ```
         参数：
             id:integer  用户id
@@ -75,7 +81,7 @@ API for SingularityClub
             用户实体
     ```
     
-    - DELETE `api/users/:id`    删除某用户
+    -   DELETE `api/users/:id`    删除某用户
     ```
         参数：
             id:integer 用户id
