@@ -21,7 +21,7 @@ API for SingularityClub
 - Users
     - POST `/api/users`  添加用户
 
-```
+    ```
         参数:
             username:string 用户名
             password:string 密码
@@ -29,11 +29,14 @@ API for SingularityClub
             
         返回：
             用户实体
-```
+    ```
+
 
     - POST `/api/users/login` 登录
+    ```
         参数：
 
             username:string 用户名
             password:string 密码
+    ```
 
