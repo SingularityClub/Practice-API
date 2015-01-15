@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
     self.name, self.email, self.gender = name, email, gender
     change_password password if password
     self.save!
-    self
+    self.safe_attributes
   end
 
   def change_password(password)
