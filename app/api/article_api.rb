@@ -44,6 +44,18 @@ class PracticeAPI::ArticleApi < Grape::API
         @article.safe_attributes
       end
 
+      desc '修改文章内容'
+      params do
+        requires :content, type: String
+      end
+      put do
+        require_authorized!
+
+        @article.content = params[:content]
+        @article.save!
+        @article.safe_attributes
+      end
+
       desc '禁用某文章'
       delete do
         require_authorized!
