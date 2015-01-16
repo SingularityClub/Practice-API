@@ -302,7 +302,7 @@ bash run.sh
 
 ###Comments 评论
 
-**GET `/api/article/:id/comments`  按文章获取评论·分页 **
+**GET `/api/article/:id/comments`  按文章获取评论·分页**
 
 参数
 ```js
