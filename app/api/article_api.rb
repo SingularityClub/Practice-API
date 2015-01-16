@@ -12,7 +12,7 @@ class PracticeAPI::ArticleApi < Grape::API
         articles, count=Article.paginate(start, _end)
       end
 
-      paginate_result articles, count, start
+      paginate_result articles.as_json(include: {tags: {only: :title}, user: {only: [:id, :username, :name]}}), count, start
     end
 
     desc '添加文章'
@@ -56,11 +56,12 @@ class PracticeAPI::ArticleApi < Grape::API
       namespace 'comments' do
         get do
           if @article
-            paginate_anything do |start, _end|
-              @article.paginate_comments(start, _end)
-                  .as_json(only: [:o_auth_account_id, :id, :content, :up, :down, :created_at],
-                           include: {o_auth_account: {only: [:id, :avatar_large, :screen_name]}})
-            end
+            start = params[:start]
+            _end = params[:end]
+            comments, count = @article.paginate_comments(start, _end)
+                                  .as_json(only: [:o_auth_account_id, :id, :content, :up, :down, :created_at],
+                                           include: {o_auth_account: {only: [:id, :avatar_large, :screen_name]}})
+            paginate_result comments, count
           else
             status(404)
           end
