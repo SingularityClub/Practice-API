@@ -1,10 +1,10 @@
 require "#{__dir__}/../config/environment"
 
 def app
-  'PracticeAPI'
+  PracticeAPI
 end
 
-describe 'PracticeAPI' do
+describe PracticeAPI do
   include Rack::Test::Methods
   it '获取所有用户' do
     get '/api/users'
