@@ -2,7 +2,6 @@ source 'http://ruby.taobao.org'
 
 gem 'activerecord', require: 'active_record'
 gem 'rack'
-gem 'sqlite3'
 
 gem 'grape'
 gem 'rake'
@@ -12,8 +11,12 @@ gem 'rack-cors', :require => 'rack/cors'
 
 gem 'goliath', :require => false
 
+group :production do
+  #gem 'mysql2'
+end
 
 group :test, :development do
   gem 'rack-test'
   gem 'rspec'
+  gem 'sqlite3'
 end

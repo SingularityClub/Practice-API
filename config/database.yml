@@ -21,11 +21,13 @@ test:
   database: <%= Pathname.new(File.expand_path('../..', __FILE__)) %>/db/test.sqlite3
 
 production:
-  <<: *default
-  database: <%= Pathname.new(File.expand_path('../..', __FILE__)) %>/db/production.sqlite3
-#  adapter: mysql2
-#  database: lemonbase
-#  host: localhost
-#  username: root
-#  password: 901001
-#  encoding: utf8
+production:
+#  <<: *default
+#  database: db/production.sqlite3
+  adapter: mysql2
+  database: <%= ENV['TAVERN_BLOG_DATABASE']%>
+  host: <%= ENV['TAVERN_BLOG_HOST']%>
+  username: <%= ENV['TAVERN_BLOG_USER']%>
+  password: <%= ENV['TAVERN_BLOG_PASSWORD']%>
+  encoding: utf8
+  pool: 5
