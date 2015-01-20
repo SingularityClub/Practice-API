@@ -1,6 +1,7 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
   has_many :articles, class_name: 'Article'
+  has_many :available_articles, -> { where enable: true }, class_name: 'Article', foreign_key: :user_id
   has_one :o_auth_account
   validates :username, uniqueness: {case_sensitive: false, message: '已有该用户!'},
             length: {in: 4...32, message: '用户名在4-32个字符之内'}
@@ -17,6 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def change_password(password)
+    self.salt = Digest::SHA1.hexdigest(rand.to_s) unless self.salt
     self.encrypted_password = Digest::SHA1.hexdigest(password+self.salt)
   end
 
@@ -30,12 +32,17 @@ class User < ActiveRecord::Base
   end
 
   class << self
+    def find_or_reg(username='', admin=false)
+      user = User.find_by(username: username, enable: true)
+      user =reg(username, '123456', 0, admin) unless user
+      user
+    end
 
-
-  def reg(username='', password='', gender=0)
+    def reg(username='', password='', gender=0, admin=false)
       salt = Digest::SHA1.hexdigest(rand.to_s)
       encrypted_password = Digest::SHA1.hexdigest(password+salt)
-      user = User.new username: username, encrypted_password: encrypted_password, gender: gender, salt: salt
+      user = User.new username: username, encrypted_password: encrypted_password,
+                      gender: gender, salt: salt, admin: admin
       user.save!
       user
     end

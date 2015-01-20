@@ -17,25 +17,24 @@ class Article < ActiveRecord::Base
   end
 
   class << self
-
     def available
       Article.where(enable: true)
     end
 
-    def paginate(start=0, _end=100)
+    def paginate(article_source, start=0, _end=100)
       start||=0
       _end||=100
       length = _end - start
       length = 100 if length>100
-      return Article.available.includes(:user, :tags).select(:id, :title, :content, :views, :user_id, :created_at, :comment_count, :updated_at)
-                 .order(created_at: :desc).offset(start).limit(length+1), Article.available.count
+      return article_source.includes(:user, :tags).select(:id, :title, :content, :views, :user_id, :created_at, :comment_count, :updated_at)
+                 .order(created_at: :desc).offset(start).limit(length+1), article_source.count
     end
 
-    def paginate_for_tag(tag_name='', start=0, _end=100)
+    def paginate_for_tag(tag_name, article_scope, start=0, _end=100)
       length = _end - start
       length = 100 if length>100
       tag = Tag.find_by(title: tag_name)
-      return tag.articles.select(:id, :title, :content, :views, :user_id, :created_at, :comment_count, :updated_at)
+      return tag.articles.instance_exec(&article_scope).select(:id, :title, :content, :views, :user_id, :created_at, :comment_count, :updated_at)
                  .order(created_at: :desc).offset(start).limit(length+1), tag.articles.count
     end
 
@@ -45,6 +44,5 @@ class Article < ActiveRecord::Base
       article.tags << tags
       article
     end
-
   end
 end

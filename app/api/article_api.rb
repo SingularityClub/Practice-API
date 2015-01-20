@@ -7,9 +7,9 @@ class PracticeAPI::ArticleApi < Grape::API
       start = params[:start]||0
       _end = params[:end]||100
       if params[:tagname]
-        articles, count=Article.paginate_for_tag(params[:tagname], start, _end)
+        articles, count=Article.paginate_for_tag(params[:tagname], -> { where user_id: @space_user.id }, start, _end)
       else
-        articles, count=Article.paginate(start, _end)
+        articles, count=Article.paginate(@space_user.available_articles, start, _end)
       end
 
       paginate_result articles.as_json(include: {tags: {only: :title}, user: {only: [:id, :username, :name]}}), count, start
@@ -37,7 +37,7 @@ class PracticeAPI::ArticleApi < Grape::API
 
       desc '获取某文章，并且让浏览数+1'
       get do
-        return status(404) unless @article
+        error!({message: '此博文不存在！'}.as_json, 404) unless @article
 
         @article.views+=1
         @article.save!

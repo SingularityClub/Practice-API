@@ -2,9 +2,6 @@ class PracticeAPI < Grape::API
   include Grape::ActiveRecord::Extension
   format :json
 
-  before do
-    @current_user= User.auth_with_cookie cookies
-  end
 
   rescue_from :all do |e|
     error_response status: 500, message: {message: e.message, class: e.class.name, statck: e.backtrace}.as_json
@@ -13,20 +10,23 @@ class PracticeAPI < Grape::API
   require "#{__dir__}/user_api"
   require "#{__dir__}/article_api"
   require "#{__dir__}/tag_api"
-  require "#{__dir__}/comment_api"
 
   params do
-    requires :space, type: String
+    requires :username, type: String
   end
-  namespace ':space' do
+  namespace ':username' do
     after_validation do
-      p params[:space]
+      error!({message: '请求错误，请保证你的用户名在4-32之间！'}.as_json, 400) unless params[:username].length>4 and params[:username].length<=32
+
+      #领域用户
+      @space_user= User.find_or_reg(params[:username], false)
+      #当前登录用户
+      @current_user= User.auth_with_cookie cookies
     end
 
     mount PracticeAPI::UserApi => '/'
     mount PracticeAPI::ArticleApi => '/'
     mount PracticeAPI::TagApi => '/'
-    mount PracticeAPI::CommentApi => '/'
   end
 
 end

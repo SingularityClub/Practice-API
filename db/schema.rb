@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102073455) do
+ActiveRecord::Schema.define(version: 20141226081731) do
 
   create_table "articles", force: true do |t|
     t.string   "title",                        null: false
@@ -32,36 +32,19 @@ ActiveRecord::Schema.define(version: 20150102073455) do
   end
 
   create_table "comments", force: true do |t|
-    t.string   "content",           limit: 6000,                null: false
-    t.integer  "up",                             default: 0,    null: false
-    t.integer  "down",                           default: 0,    null: false
-    t.boolean  "enable",                         default: true, null: false
+    t.string "content", limit: 6000, null: false
+    t.integer "up", default: 0, null: false
+    t.integer "down", default: 0, null: false
+    t.boolean "enable", default: true, null: false
+    t.integer "layer", null: false
+    t.string "name"
     t.string   "ip"
-    t.integer  "o_auth_account_id"
-    t.integer  "comment_id"
     t.integer  "article_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id"
-  add_index "comments", ["comment_id"], name: "index_comments_on_comment_id"
-  add_index "comments", ["o_auth_account_id"], name: "index_comments_on_o_auth_account_id"
-
-  create_table "o_auth_accounts", force: true do |t|
-    t.string   "idstr"
-    t.string   "screen_name"
-    t.string   "name"
-    t.string   "url"
-    t.string   "profile_image_url"
-    t.string   "gender"
-    t.string   "avatar_large"
-    t.string   "avatar_hd"
-    t.string   "lang"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "tags", force: true do |t|
     t.string   "title",                     null: false
@@ -72,18 +55,16 @@ ActiveRecord::Schema.define(version: 20150102073455) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",           limit: 32,                null: false
+    t.string "username", limit: 32, null: false
     t.string   "name"
-    t.string   "encrypted_password",                           null: false
+    t.string "encrypted_password"
     t.string   "email"
-    t.string   "salt",                                         null: false
+    t.string "salt"
     t.integer  "gender",                        default: 0
-    t.boolean  "enable",                        default: true, null: false
-    t.integer  "o_auth_account_id"
+    t.boolean "admin", default: false, null: false
+    t.boolean "enable", default: true, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "users", ["o_auth_account_id"], name: "index_users_on_o_auth_account_id"
 
 end

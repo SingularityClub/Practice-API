@@ -5,6 +5,8 @@ class PracticeAPI::UserApi < Grape::API
 
     desc '获取所有用户'
     get do
+      require_admin!
+
       User.all.as_json(only: [:username, :name, :email, :gender])
     end
 
@@ -15,6 +17,7 @@ class PracticeAPI::UserApi < Grape::API
       optional :gender, type: Integer
     end
     post :reg do
+      require_admin!
       # error! message: '私人博客，暂时不开放注册！'
       User.reg(params[:username], params[:password], params[:gender]).safe_attributes
     end
@@ -40,17 +43,31 @@ class PracticeAPI::UserApi < Grape::API
       @current_user.safe_attributes if @current_user
     end
 
+    desc '修改当前用户'
+    params do
+      optional :name, type: String
+      optional :email, type: String
+      optional :password, type: String
+      optional :gender, type: Integer
+    end
+    put :current do
+      @current_user.update! params[:name], params[:email], params[:password], params[:gender]
+    end
+
     desc '某用户的操作'
     params do
       requires :id, type: String
     end
     namespace ':id' do
+      helpers ::ToolKit
       after_validation do
         @user = User.find_by(id: params[:id])
       end
 
       desc '获取该用户数据'
       get do
+        require_admin!
+
         @user.safe_attributes
       end
 
