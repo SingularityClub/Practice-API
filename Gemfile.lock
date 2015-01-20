@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/sebglazebrook/rack-contrib.git
+  revision: 8710a50a731a98ee5c1b63562c91cc89d6cebf15
+  specs:
+    rack-contrib (1.2.0)
+      rack (>= 0.9.1)
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -72,8 +79,6 @@ GEM
     rack-accept (0.4.5)
       rack (>= 0.4)
     rack-accept-media-types (0.9)
-    rack-contrib (1.2.0)
-      rack (>= 0.9.1)
     rack-cors (0.2.9)
     rack-mount (0.8.3)
       rack (>= 1.0.0)
@@ -115,6 +120,7 @@ DEPENDENCIES
   grape
   grape-activerecord
   rack
+  rack-contrib!
   rack-cors
   rack-test
   rake

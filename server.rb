@@ -13,7 +13,7 @@ class Application < Goliath::API
   end
 
   # use Goliath::Rack::Render, 'json'
-  # use Rack::TryStatic, :root => 'web', :urls => %w[/ /assets /views], :try => %w(.html .js .css index.html)
+  use Rack::TryStatic, :root => 'web', :urls => %w[/ /assets /views], :try => %w(.html .js .css index.html)
   def response(env)
     ::PracticeAPI.call(env)
   end
