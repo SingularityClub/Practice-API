@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20141226081731) do
   end
 
   create_table "comments", force: true do |t|
-    t.string "content", limit: 6000, null: false
-    t.integer "up", default: 0, null: false
-    t.integer "down", default: 0, null: false
-    t.boolean "enable", default: true, null: false
-    t.integer "layer", null: false
-    t.string "name"
+    t.string   "content",    limit: 6000,                null: false
+    t.integer  "up",                      default: 0,    null: false
+    t.integer  "down",                    default: 0,    null: false
+    t.boolean  "enable",                  default: true, null: false
+    t.integer  "layer",                                  null: false
+    t.string   "name"
     t.string   "ip"
     t.integer  "article_id"
     t.datetime "created_at"
@@ -55,14 +55,14 @@ ActiveRecord::Schema.define(version: 20141226081731) do
   end
 
   create_table "users", force: true do |t|
-    t.string "username", limit: 32, null: false
+    t.string   "username",           limit: 32,                 null: false
     t.string   "name"
-    t.string "encrypted_password"
+    t.string   "encrypted_password"
     t.string   "email"
-    t.string "salt"
+    t.string   "salt"
     t.integer  "gender",                        default: 0
-    t.boolean "admin", default: false, null: false
-    t.boolean "enable", default: true, null: false
+    t.boolean  "admin",                         default: false, null: false
+    t.boolean  "enable",                        default: true,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

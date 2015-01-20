@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html ng-app="Practice" ng-controller="mainController">
+<head lang="zh-cn">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="assets/vendor/foundation/css/foundation.css">
+    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="assets/vendor/foundation/js/foundation.min.js"></script>
+    <script src="assets/vendor/angular/angular.min.js"></script>
+    <script src="assets/vendor/angular-resource/angular-resource.min.js"></script>
+    <script src="assets/vendor/angular-route/angular-route.min.js"></script>
+    <script src="assets/vendor/angular-sanitize/angular-sanitize.min.js"></script>
+
+    <script src="assets/controller/app_controller.js"></script>
+    <script src="assets/controller/doc_controller.js"></script>
 </head>
 <body>
-hello. welcome to practice
+<nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="#">Practice-API</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+            <li class="active"><a href="#/doc">文档</a></li>
+            <li class="has-dropdown">
+                <a href="#">Right Button Dropdown</a>
+                <ul class="dropdown">
+                    <li><a href="#">First link in dropdown</a></li>
+                    <li class="active"><a href="#">Active link in dropdown</a></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</nav>
+<div ng-view>
+
+</div>
 </body>
 </html>
