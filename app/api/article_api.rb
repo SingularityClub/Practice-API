@@ -4,8 +4,8 @@ class PracticeAPI::ArticleApi < Grape::API
 
     desc '获取文章列表'
     get do
-      start = params[:start]
-      _end = params[:end]
+      start = params[:start]||0
+      _end = params[:end]||100
       if params[:tagname]
         articles, count=Article.paginate_for_tag(params[:tagname], start, _end)
       else

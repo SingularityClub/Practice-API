@@ -23,6 +23,8 @@ class Article < ActiveRecord::Base
     end
 
     def paginate(start=0, _end=100)
+      start||=0
+      _end||=100
       length = _end - start
       length = 100 if length>100
       return Article.available.includes(:user, :tags).select(:id, :title, :content, :views, :user_id, :created_at, :comment_count, :updated_at)
