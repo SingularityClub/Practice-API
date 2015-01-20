@@ -3,6 +3,11 @@ class PracticeAPI < Grape::API
   format :json
 
 
+  after do
+    header 'Access-Control-Allow-Origin', '*'
+    header 'Access-Control-Allow-Methods', '*'
+  end
+
   rescue_from :all do |e|
     error_response status: 500, message: {message: e.message, class: e.class.name, statck: e.backtrace}.as_json
   end
