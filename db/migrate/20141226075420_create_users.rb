@@ -7,9 +7,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :salt, null: false
       t.integer :gender, default: 0
+      t.boolean :admin, null: false, default: false
       t.boolean :enable, default: true, null: false
 
-      t.references :o_auth_account, index: true, null: true
       t.timestamps
     end
   end

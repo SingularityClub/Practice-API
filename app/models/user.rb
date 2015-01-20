@@ -30,7 +30,9 @@ class User < ActiveRecord::Base
   end
 
   class << self
-    def reg(username='', password='', gender=0)
+
+
+  def reg(username='', password='', gender=0)
       salt = Digest::SHA1.hexdigest(rand.to_s)
       encrypted_password = Digest::SHA1.hexdigest(password+salt)
       user = User.new username: username, encrypted_password: encrypted_password, gender: gender, salt: salt
