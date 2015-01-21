@@ -1,7 +1,8 @@
 <div id="articleview" ng-controller="articleWrap">
     <div class="actionbar" layout="row" layout-align="space-between end" ng-show="Config.User.id">
         <div flex class="icons">
-            <md-button aria-label="accessibility"><i class="fa fa-pencil edit"></i>
+            <md-button aria-label="accessibility" ng-href="#/article/{{article.id}}/edit"><i
+                    class="fa fa-pencil edit"></i>
             </md-button>
             <md-button aria-label="accessibility" ng-click="disable()"><i class="fa fa-ban disable"></i>
             </md-button>
@@ -28,20 +29,21 @@
             <li ng-repeat="comment in comments" layout="row">
                 <div flex="10">
                     <img style="width:80%" ng-src="{{comment.o_auth_account.avatar_large}}"
-                         src="assets/imgs/who.jpg"
+                         src="assets/imgs/who.jpg" ng-show="comment.enable"
                          class="img-thumbnail">
                 </div>
                 <div flex>
-                    <p class="comment_info"><span><a target="_blank"
-                                                     ng-href="http://weibo.com/u/{{comment.o_auth_account.id}}">{{comment.o_auth_account.screen_name||'匿名'}}</a></span>
-                        <span class="pull-right text-muted"><i class="fa fa-clock-o fa-fw"></i>{{DateParse(comment.created_at,"yyyy-MM-dd
+                    <p class="comment_info">
+                        <span>#{{comment.layer}}</span>
+                        <span><a target="_blank">{{comment.name||'匿名'}}</a></span>
+                        <span class="pull-right text-muted" ng-show="comment.enable"><i class="fa fa-clock-o fa-fw"></i>{{DateParse(comment.created_at,"yyyy-MM-dd
                         hh:mm:ss")}}</span></p>
 
                     <div ng-bind-html="marked(comment.content)"></div>
-                    <div ng-show="Config.User.id">
+                    <div ng-show="Config.User.id&&comment.enable">
                         <span class="pull-right">
-                                <i class="fa fa-ban fa-fw pointer" style="color:darkorange"></i>
-                                <i class="fa fa-times fa-fw pointer" style="color:firebrick"></i>
+                                <i class="fa fa-ban fa-fw pointer" style="color:darkorange"
+                                   ng-click="CommentBan(comment)"></i>
                         </span>
                     </div>
                 </div>
@@ -57,12 +59,13 @@
         <div class="clearfix"></div>
         <div>
             <p class="editor_notice">
-                <span><a ng-click="CommentReview()"
-                         class="pointer">{{preview_show?'[编辑]':'[预览]'}}</a></span>
+                <span><i class="fa fa-comment"></i></span>
                 <span><code>Ctrl+S</code>提交，可以使用<a
                         href="http://www.markdown.cn/" target="_blank"><code>Markdown</code></a>语法
                 </span>
-                <span class="pull-right" id="wb_connect_btn" weibo-login-button></span>
+
+                <span class="pull-right"><a ng-click="CommentReview()"
+                                            class="pointer">{{preview_show?'[编辑]':'[预览]'}}</a></span>
             </p>
             <textarea ng-hide="preview_show" ng-keydown="keydown($event)" class="editor"
                       ng-model="$parent.comment.content" ng-init="$parent.comment.content=''"></textarea>

@@ -20,9 +20,13 @@ angular.module("Etrain.Article", ["ngRoute", "Etrain.Service.Toolkit", 'Etrain.S
                 controller: 'articleView',
                 templateUrl: 'views/Article/view.html'
             })
+            .when("/article/:id/edit", {
+                controller: 'articleEdit',
+                templateUrl: 'views/Article/new.html'
+            })
     }])
     .controller("articleWrap", ["$scope", "$rootScope", "$mdDialog", function ($scope, $rootScope, $mdDialog) {
-        $scope.NavTrace.unshift("博客", "#/article");
+        $scope.NavTrace.unshift("博文", "#/article");
         $rootScope.Config.Module = "Article";
     }])
     .controller("articleIndex", ["$scope", "$mdDialog", "articleService", "$toolkit", "$routeParams", "$location",
@@ -155,6 +159,11 @@ angular.module("Etrain.Article", ["ngRoute", "Etrain.Service.Toolkit", 'Etrain.S
 
             $scope.marked = marked;
 
+            $scope.CommentBan = function (comment) {
+                $toolkit.Tag.ban({article_id: $scope.id, id: comment.id}, function () {
+                })
+            };
+
             $scope.CommentReview = function () {
                 $scope.preview = marked($scope.comment.content);
                 $scope.preview_show = !$scope.preview_show;
@@ -207,4 +216,60 @@ angular.module("Etrain.Article", ["ngRoute", "Etrain.Service.Toolkit", 'Etrain.S
             });
 
             $scope.DateParse = $toolkit.DateParse;
-        }]);
+        }])
+    .controller("articleEdit", ["$scope", "$toolkit", "$routeParams", "$location", "articleService",
+        function ($scope, $toolkit, $routeParams, $location, articleService) {
+            $scope.NavTrace.unshift("修改", "#/article/new");
+
+            $scope.id = $routeParams.id;
+            //设置初始值，以防控件默认出错
+            $scope.article = {content: "", tags: []};
+
+            $scope.articleLoad = function () {
+                articleService.Article.get({id: $scope.id}, function (content) {
+                    var tags = [];
+                    angular.forEach(content.tags, function (obj) {
+                        tags.push(obj.title);
+                    });
+                    content.tags = tags;
+                    $scope.article = content;
+
+                    $toolkit.markdownEditor("editor", function () {
+                        $scope.Preview = function () {
+                            if ($scope.article.content)
+                                $scope.preview = marked($scope.article.content);
+                        };
+                    });
+                });
+            };
+            $scope.articleLoad();
+
+            //ctrl+s 保存
+            $(document).keydown(function (e) {
+                if (e.ctrlKey && e.keyCode == 83) {
+                    e.preventDefault();
+                }
+            });
+            $scope.keydown = function (e) {
+                if (e.ctrlKey && e.keyCode == 83) {
+                    $toolkit.Confirm.show("提交修改", "本文章即将提交修改，是否继续？", "提交", "取消"
+                        , function () {
+                            var post_article = new articleService.Article($scope.article);
+                            post_article.title = post_article.content.split('\n')[0].trim();
+                            if (post_article.title[0] == '#')
+                                post_article.title = post_article.title.substring(1).trim();
+                            post_article.$save(function () {
+                                $toolkit.Confirm.show("成功", "修改文章内容成功", "返回列表", "停留此页面"
+                                    , function () {
+                                        $location.path("article");
+                                    }
+                                    , function () {
+                                    }, $scope.$event);
+                            });
+                        }, function () {
+
+                        }, e);
+                }
+            };
+        }])
+;

@@ -22,7 +22,8 @@
         </div>
     </div>
     <p>
-        <ui-select tagging reset-search-input="true" multiple tagging-label="false" ng-model="article.tags"
+        <ui-select ng-disabled="article.id" tagging reset-search-input="true" multiple tagging-label="false"
+                   ng-model="article.tags"
                    theme="bootstrap" style="width: 100%;">
             <ui-select-match placeholder="用回车来添加标签，超过5个只保存前5个">{{$item}}</ui-select-match>
             <ui-select-choices repeat="tag in article.tags">

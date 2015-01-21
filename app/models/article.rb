@@ -12,8 +12,7 @@ class Article < ActiveRecord::Base
   def paginate_comments(start=0, _end =100)
     length = _end - start
     length = 100 if length>100
-    return self.comments.order(created_at: :desc)
-               .offset(start).limit(length+1), self.comments.count
+    return self.all_comments.offset(start).limit(length+1), self.all_comments.count
   end
 
   class << self

@@ -6,7 +6,9 @@ angular.module("Etrain.Service.Toolkit", ["ngMaterial", "ngResource"])
         function ($mdToast, $mdDialog, $resource, $rootScope, $location) {
             var $this = this;
 
-            this.Tag = $resource(config.prefix + "/tags");
+            this.Tag = $resource(config.prefix + "/tags", {}, {
+                ban: {method: "delete", url: config.prefix + "/articles/:article_id/comments/:id"}
+            });
 
             //用户是否登录
             this.Authorize = function (cb) {
