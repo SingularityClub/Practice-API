@@ -6,7 +6,7 @@ angular.module("Etrain.Service.Toolkit", ["ngMaterial", "ngResource"])
         function ($mdToast, $mdDialog, $resource, $rootScope, $location) {
             var $this = this;
 
-            this.Tag = $resource("api/tags");
+            this.Tag = $resource(config.prefix + "/tags");
 
             //用户是否登录
             this.Authorize = function (cb) {

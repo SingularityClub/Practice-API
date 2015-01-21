@@ -15,6 +15,19 @@ class PracticeAPI::ArticleApi < Grape::API
       paginate_result articles.as_json(include: {tags: {only: :title}, user: {only: [:id, :username, :name]}}), count, start
     end
 
+    desc '用paginate_anything获取文章列表'
+    get :anything do
+      articles= paginate_anything do |start, _end|
+        if params[:tagname]
+          user_id = @space_user.id #解决proc的上下文问题
+          Article.paginate_for_tag(params[:tagname], -> { where(user_id: user_id) }, start, _end)
+        else
+          Article.paginate(@space_user.available_articles, start, _end)
+        end
+      end
+      articles.as_json(include: {tags: {only: :title}, user: {only: [:id, :username, :name]}})
+    end
+
     desc '添加文章'
     params do
       requires :title, type: String
@@ -66,30 +79,36 @@ class PracticeAPI::ArticleApi < Grape::API
 
       desc '获取带文章的所有评论'
       namespace 'comments' do
+        helpers ::ToolKit
+        after_validation do
+          @article = Article.find_by(id: params[:id])
+        end
+
         get do
-          if @article
-            start = params[:start]
-            _end = params[:end]
-            comments, count = @article.paginate_comments(start, _end)
-                                  .as_json(only: [:o_auth_account_id, :id, :content, :up, :down, :created_at],
-                                           include: {o_auth_account: {only: [:id, :avatar_large, :screen_name]}})
-            paginate_result comments, count
-          else
-            status(404)
+          error!({message: '不存在此博文！'}.as_json, 404) unless @article
+
+          start = params[:start]
+          _end = params[:end]
+          comments, count = @article.paginate_comments(start, _end)
+                                .as_json(only: [:id, :content, :up, :down, :created_at])
+          paginate_result comments, count
+        end
+
+        get :anything do
+          error!({message: '不存在此博文！'}.as_json, 404) unless @article
+
+          paginate_anything do |start, _end|
+            @article.paginate_comments(start, _end)
+                .as_json(only: [:id, :content, :up, :down, :created_at])
           end
         end
 
         desc '添加一条评论'
         params do
           requires :content, type: String
-          optional :account, type: Hash do
-            optional :id, type: String
-            optional :screen_name, type: String
-          end
-          optional :parent_id, type: Integer
         end
         post do
-          Comment.post(@article, params[:content], params[:parent_id], params[:account])
+          Comment.post(@article, params[:content])
         end
 
         params do
@@ -102,13 +121,6 @@ class PracticeAPI::ArticleApi < Grape::API
 
           desc '删除该评论'
           delete do
-            require_authorized!
-
-            @comment.destroy!
-          end
-
-          desc '禁用该评论'
-          put do
             require_authorized!
 
             @comment.enable = false

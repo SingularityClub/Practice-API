@@ -2,7 +2,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :tags
   has_many :comments, -> { where enable: true }
-  has_many :all_comments, class_name: 'Comment', foreign_key: 'comment_id', dependent: :destroy
+  has_many :all_comments, class_name: 'Comment', foreign_key: 'article_id', dependent: :destroy
 
   def safe_attributes
     self.as_json(only: [:id, :title, :content, :views, :user, :created_at, :updated_at, :comment_count],

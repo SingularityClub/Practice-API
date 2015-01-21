@@ -52,7 +52,7 @@ angular.module("Etrain.Article", ["ngRoute", "Etrain.Service.Toolkit", 'Etrain.S
                     })[0];
                 }
             });
-            $scope.articleUrl = $scope.tag ? config.prefix + "/articles?tagname=" + $scope.tag : config.prefix + "/articles";
+            $scope.articleUrl = $scope.tag ? config.prefix + "/articles/anything?tagname=" + $scope.tag : config.prefix + "/articles/anything";
 
             //注册markdown和高亮
             marked.setOptions({
@@ -140,6 +140,7 @@ angular.module("Etrain.Article", ["ngRoute", "Etrain.Service.Toolkit", 'Etrain.S
     .controller("articleView", ["$scope", "articleService", "$toolkit", "$routeParams", "$location",
         function ($scope, articleService, $toolkit, $routeParams, $location) {
             $scope.id = $routeParams.id;
+            $scope.comments_url = config.prefix + '/articles/' + $scope.id + '/comments/anything';
 
             marked.setOptions({
                 highlight: function (code) {
@@ -182,8 +183,8 @@ angular.module("Etrain.Article", ["ngRoute", "Etrain.Service.Toolkit", 'Etrain.S
                 $toolkit.Confirm.show("确认", "真的要禁用本文？", "是", "否"
                     , function () {
                         $scope.article.$delete(function () {
-                            $toolkit.Notice.show("已禁用")
-                            $location.path("article")
+                            $toolkit.Notice.show("已禁用");
+                            $location.path("article");
                         })
                     }, function () {
 
@@ -206,26 +207,4 @@ angular.module("Etrain.Article", ["ngRoute", "Etrain.Service.Toolkit", 'Etrain.S
             });
 
             $scope.DateParse = $toolkit.DateParse;
-        }])
-    .directive("weiboLoginButton", function () {
-        return {
-            link: function (scope, ele, attrs) {
-                WB2.anyWhere(function (W) {
-                    W.widget.connectButton({
-                        id: attrs['id'],//"wb_connect_btn",
-                        type: "4,3",
-                        callback: {
-                            login: function (o) {	//登录后的回调函数
-                                $scope.Config.OAuthUser = o;
-                                $scope.$$phase || $scope.$apply();
-                            },
-                            logout: function () {	//退出后的回调函数
-                                $scope.Config.OAuthUser = null;
-                                $scope.$$phase || $scope.$apply();
-                            }
-                        }
-                    });
-                });
-            }
-        }
-    });
+        }]);
