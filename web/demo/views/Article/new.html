@@ -1,0 +1,40 @@
+<div ng-controller="articleWrap" id="article_new" ng-keydown="keydown($event)" ng-show="Config.User.id">
+    <div class="notice inherit">
+        <h4>使用须知</h4>
+
+        <div layout="row">
+            <ul flex>
+                <li><p>左边是编辑器，右边是预览。 </p>
+                </li>
+                <li><p>使用markdown语法。</p>
+                </li>
+                <li><p>语法查阅： <a href="http://www.markdown.cn/" target="_blank"><code>Markdown语法说明</code></a></p>
+                </li>
+            </ul>
+            <ul flex>
+                <li><p>第一行是文章标题</p>
+                </li>
+                <li><p>每隔<code>5秒</code>自动暂存，保存后清除</p>
+                </li>
+                <li><p><code>Ctr + S</code> 保存</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p>
+        <ui-select tagging reset-search-input="true" multiple tagging-label="false" ng-model="article.tags"
+                   theme="bootstrap" style="width: 100%;">
+            <ui-select-match placeholder="用回车来添加标签，超过5个只保存前5个">{{$item}}</ui-select-match>
+            <ui-select-choices repeat="tag in article.tags">
+            </ui-select-choices>
+        </ui-select>
+    </p>
+    <md-content layout="row" class="editor_preview">
+        <div flex class="editor" ui-ace="{showGutter: false,mode:'markdown',theme:'chrome', onChange:Preview()}"
+             ng-model="article.content"
+             style="height: 500px;;"></div>
+        <!--<textarea class="editor" ng-model="article.content" id="editor" flex></textarea>-->
+
+        <div class="preview" flex style="" ng-bind-html="preview"></div>
+    </md-content>
+</div>

@@ -1,0 +1,51 @@
+<div ng-controller="articleWrap" id="article_index">
+    <div class="actionbar" layout="row" layout-align="space-between end">
+        <div flex class="icons">
+            <md-button ng-show="Config.User.id" aria-label="accessibility" ng-href="#/article/new">
+                <i class="fa fa-plus" style="color:#00897b"></i>
+            </md-button>
+            <md-button aria-label="accessibility" ng-class="{active:article_show_type=='line'}"
+                       ng-click="changeArticleShowType('line')"><i class="fa fa-list"></i>
+            </md-button>
+            <md-button aria-label="accessibility" ng-class="{active:article_show_type=='grid'}"
+                       ng-click="changeArticleShowType('grid')"><i class="fa fa-th-large"></i>
+            </md-button>
+        </div>
+
+        <ui-select flex="20" ng-model="selectedTag" on-select="TagSelect($select.selected)" theme="select2"
+                   reset-search-input="true"
+                   style="width: 400px; height: 28px;">
+            <ui-select-match placeholder="标签" style="height: 28px">{{$select.selected.title}}</ui-select-match>
+            <ui-select-choices repeat="tag in tags | filter: $select.search">
+                {{tag.title}}
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <ul class="articles" ng-class="{line: article_show_type=='line', grid: article_show_type=='grid'}">
+        <li ng-repeat="a in articles" class="article_item">
+            <header>
+                <span class="datetime">
+                <span class="time">{{DateParse(a.created_at, "hh")}}:{{DateParse(a.created_at, "mm")}}</span>
+                <span class="date">
+                    <span class="month">{{DateParse(a.created_at, "MM")}}</span>
+                    <span class="day">{{DateParse(a.created_at, "dd")}}</span>
+                </span>
+                </span>
+                <a class="inherit" ng-href="#/article/{{a.id}}/view">{{a.title}}</a>
+            </header>
+            <article ng-bind-html="marked(a.content)"></article>
+            <footer>
+                <div class="tags"><a ng-repeat="tag in a.tags" ng-href="#/article/{{tag.title}}/index"><span
+                        class="label label-tag">{{tag.title}}</span></a>
+                </div>
+                <div class="info">
+                    <span><i class="fa fa-user fa-fw"></i> {{a.user.name||a.user.username||"匿名"}}</span> <span><i
+                        class="fa fa-eye fa-fw"></i> {{a.views}}</span>
+                    <span><i class="fa fa-comment fa-fw"></i>{{a.comment_count}}</span>
+                </div>
+            </footer>
+        </li>
+    </ul>
+    <p bgf-pagination collection="articles" auto-presets="false" reload-page="reload" per-page="4" url="articleUrl"
+       template-url="assets/paginate-anything.html"></p>
+</div>

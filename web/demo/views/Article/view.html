@@ -1,0 +1,75 @@
+<div id="articleview" ng-controller="articleWrap">
+    <div class="actionbar" layout="row" layout-align="space-between end" ng-show="Config.User.id">
+        <div flex class="icons">
+            <md-button aria-label="accessibility"><i class="fa fa-pencil edit"></i>
+            </md-button>
+            <md-button aria-label="accessibility" ng-click="disable()"><i class="fa fa-ban disable"></i>
+            </md-button>
+        </div>
+    </div>
+    <section class="article">
+        <header>
+            <i class="fa fa-qrcode fa-fw qrcode"></i>
+            <span class="title">{{article.title}}</span>
+            <span class="extension"><i class="fa fa-clock-o fa-fw"></i>{{DateParse(article.created_at,"yyyy-MM-dd hh:mm:ss")}}</span>
+        </header>
+        <article ng-bind-html="article.content" style="min-height: 300px">楼
+        </article>
+        <footer>
+            <span class="pull-left"> <i class="fa fa-paragraph pointer"></i></span>
+            <i class="fa fa-user fa-fw"></i> {{article.user.name||article.user.username||"匿名"}}
+            <i class="fa fa-eye fa-fw"></i>{{article.views}}
+            <i class="fa fa-comment fa-fw"></i>{{article.comment_count}}
+        </footer>
+    </section>
+    <section class="comment">
+        <h4>{{comment_total_num}}条评论</h4>
+        <ul>
+            <li ng-repeat="comment in comments" layout="row">
+                <div flex="10">
+                    <img style="width:80%" ng-src="{{comment.o_auth_account.avatar_large}}"
+                         src="assets/imgs/who.jpg"
+                         class="img-thumbnail">
+                </div>
+                <div flex>
+                    <p class="comment_info"><span><a target="_blank"
+                                                     ng-href="http://weibo.com/u/{{comment.o_auth_account.id}}">{{comment.o_auth_account.screen_name||'匿名'}}</a></span>
+                        <span class="pull-right text-muted"><i class="fa fa-clock-o fa-fw"></i>{{DateParse(comment.created_at,"yyyy-MM-dd
+                        hh:mm:ss")}}</span></p>
+
+                    <div ng-bind-html="marked(comment.content)"></div>
+                    <div ng-show="Config.User.id">
+                        <span class="pull-right">
+                                <i class="fa fa-ban fa-fw pointer" style="color:darkorange"></i>
+                                <i class="fa fa-times fa-fw pointer" style="color:firebrick"></i>
+                        </span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <p class="pull-right" bgf-pagination collection="comments" auto-presets="false"
+           per-page="10"
+           url="'api/articles/'+id+'/comments'"
+           template-url="assets/paginate-anything.html"
+           reload-page="$parent.comment_reload"
+           num-items="comment_total_num"></p>
+
+        <div class="clearfix"></div>
+        <div>
+            <p class="editor_notice">
+                <span><a ng-click="CommentReview()"
+                         class="pointer">{{preview_show?'[编辑]':'[预览]'}}</a></span>
+                <span><code>Ctrl+S</code>提交，可以使用<a
+                        href="http://www.markdown.cn/" target="_blank"><code>Markdown</code></a>语法
+                </span>
+                <span class="pull-right" id="wb_connect_btn" weibo-login-button></span>
+            </p>
+            <textarea ng-hide="preview_show" ng-keydown="keydown($event)" class="editor"
+                      ng-model="$parent.comment.content" ng-init="$parent.comment.content=''"></textarea>
+
+            <div class="editor" ng-show="preview_show" ng-bind-html="preview">
+
+            </div>
+        </div>
+    </section>
+</div>

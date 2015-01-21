@@ -1,0 +1,15 @@
+@media screen and (max-width: 960px) {
+    #article_index ul li {
+        display: block;
+        margin: 1% 1%;
+        float: left;
+        height: 400px;
+        background: #fff;
+        box-shadow: 0 0 5px #aaa;
+        width: 96%;
+        border-radius: 5px;
+        padding: 0 15px 0 15px;
+        text-overflow: ellipsis;
+        overflow: hidden
+    }
+}

@@ -1,0 +1,533 @@
+body {
+    height: 100%;
+    margin: 0;
+    background: url('imgs/bgs/20.png') transparent;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif;
+    padding: 0;
+    color: #444;
+    font-size: 14px;
+    overflow: hidden
+}
+
+#login {
+}
+
+#login .md-switch-thumb, md-radio-button {
+    display: inline-block
+}
+
+#login label {
+    margin: 0;
+}
+
+.line input {
+    width: 100%
+}
+
+.line label {
+    color: rgba(0, 0, 0, 0.4) !important;
+}
+
+#copyright {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+
+#processbar {
+    position: absolute;
+    top: 0;
+    padding: 0;
+    margin: 0
+}
+
+#processbar .md-container {
+    top: 0;
+    height: 2px;
+}
+
+#login_button {
+}
+
+#settingbar {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+}
+
+.pointer {
+    cursor: pointer
+}
+
+.nav-pills {
+    height: 30px;
+    line-height: 30px;
+    margin: 5px 0;
+    padding: 0 1.5%;
+    text-shadow: 1px 1px 2px #eee;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+}
+
+.nav-pills ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left
+}
+
+.nav-pills ul li {
+    display: inline-block;
+    max-width: 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.nav-pills ul:first-child li:after {
+    content: "\f105";
+    font-family: FontAwesome;
+    margin: 0 5px 0 10px;
+}
+
+.nav-pills ul:first-child li:last-child:after {
+    content: "";
+    margin: 0 10px;
+}
+
+.nav-pills ul:last-child {
+    float: right
+}
+
+.nav-pills ul:last-child li {
+    margin: 0 5px;
+}
+
+.nav-pills ul:last-child li:hover {
+    color: #eee;
+    cursor: pointer
+}
+
+a {
+    text-decoration: none;
+    color: #006699
+}
+
+li > a, a.inherit, .inherit a, li > a:hover, a.inherit:hover, .inherit a:hover, li > a:focus, a.inherit:focus, .inherit a:focus {
+    color: inherit
+}
+
+.md-button {
+    padding: 10px;
+}
+
+.line-button {
+    width: 100%;
+}
+
+.panel-side {
+    background: url('imgs/bgs/4.png') !important;
+    color: #fff;
+    overflow: hidden
+}
+
+.panel-side ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-shadow: 1px 1px 2px #444
+}
+
+.panel-side ul li {
+    padding: 5px 20px;
+}
+
+.panel-side ul li.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    text-shadow: 0 0 3px #000
+}
+
+.panel-side ul li a {
+    height: 36px;
+    display: inline-block;
+    line-height: 36px;
+    width: 100%
+}
+
+.panel-content {
+    box-shadow: 5px 0 17px #aaa;
+    height: inherit;
+    overflow: hidden
+}
+
+#article_index {
+}
+
+#article_index > ul.articles {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#article_index > ul.articles > li {
+    display: block;
+    margin: 1% 1%;
+    float: left;
+    background: #fff;
+    box-shadow: 0 0 5px #aaa;
+    width: 48%;
+    padding: 0 15px 0 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transition: width 1s;
+}
+
+#article_index > ul.articles.line > li {
+    width: 97%;
+}
+
+#article_index > ul.articles.grid > li {
+    width: 48%
+}
+
+#article_index > ul.articles > li header {
+    height: 55px;
+    line-height: 55px;
+    font-size: 24px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    box-shadow: 0 1px #eee
+}
+
+#article_index > ul.articles > li header .datetime:before {
+    font-family: "FontAwesome";
+    content: "\f017";
+    font-size: 24px;
+}
+
+#article_index > ul.articles > li header .datetime {
+    font-size: 24px;
+    height: 35px;
+    line-height: 35px;
+    color: #006699
+}
+
+#article_index > ul.articles > li header .time {
+    display: inline-block
+}
+
+#article_index > ul.articles > li header .date {
+    display: inline-block;
+    position: relative;
+    left: -5px;
+    top: 1px
+}
+
+#article_index > ul.articles > li header .month {
+    display: block;
+    font-size: 8px;
+    height: 10px;
+    line-height: 10px
+}
+
+#article_index > ul.articles > li header .day {
+    display: block;
+    font-size: 8px;
+    height: 10px;;
+    line-height: 10px
+}
+
+#article_index > ul.articles > li header a:hover {
+    color: #006699
+}
+
+#article_index > ul.articles > li article {
+    height: 300px;
+    overflow: hidden;
+    line-height: 1.8em;
+    font-size: 16px;
+    font-family: Arial, Sans-Serif, serif;
+}
+
+#article_index > ul.articles > li footer {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+}
+
+#article_index > ul.articles > li footer .tags {
+    display: inline-block;
+}
+
+#article_index > ul.articles > li footer .info {
+    display: inline-block;
+    float: right
+}
+
+#article_index > ul.articles > li footer .tags span {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+#article_index > ul.articles > li footer .tags span:hover {
+    background: #006699 !important
+}
+
+#article_index > ul.articles > li footer .tags span.label-tag {
+    background: #aaa;
+}
+
+#article_index .article_item.ng-enter, #article_index .article_item.ng-leave {
+    position: relative;
+    transition: opacity 0s
+}
+
+#article_index .paginate-anything {
+    padding: 0 20px;
+    clear: both;
+    text-align: right
+}
+
+#article_new {
+    margin: 0 20px;
+}
+
+#article_new .notice {
+    transition: height 0.5s;
+    background: #006699;
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+}
+
+#article_new .notice p {
+    margin: 0
+}
+
+/*#article_new .notice:after { content: "\f107"; font-family: "FontAwesome"; display: inline-block}*/
+#article_new .notice.inherit a {
+    background: #fff;
+    color: #006699
+}
+
+#article_new .editor_preview {
+}
+
+#article_new .editor_preview .editor {
+    border: none;
+    height: 500px;
+    border-radius: 5px 0 0 5px;
+    padding: 5px
+}
+
+#article_new .editor_preview .preview {
+    background: #eee;
+    height: 500px;
+    overflow: auto;
+    border-radius: 0 5px 5px 0;
+    padding: 5px;
+    font-family: Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace;
+}
+
+#articleview .actionbar .edit {
+    color: green
+}
+
+#articleview .actionbar .disable {
+    color: darkorange
+}
+
+#articleview .actionbar .delete {
+    color: firebrick
+}
+
+#articleview section {
+    background: #fff;
+    padding: 0 20px 10px 20px;
+    box-shadow: 0 0 5px #aaa;
+    overflow: hidden;
+    margin-bottom: 20px
+}
+
+#articleview section.article {
+    margin-top: 10px
+}
+
+#articleview section header {
+    height: 60px;
+    line-height: 60px;
+    box-shadow: 0 1px #eee;
+    font-size: 24px;
+    color: #006699;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#articleview section header .qrcode {
+    line-height: 60px;
+}
+
+#articleview section header .title {
+    display: inline-block;
+    max-width: 70%;
+}
+
+#articleview section header .extension {
+    float: right;
+    line-height: 60px;
+    font-size: 14px;
+    color: #aaa;
+    text-shadow: 0 0 2px #eee;
+}
+
+#articleview section article {
+    font-family: Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace;
+    padding: 0 20px;
+    overflow: hidden
+}
+
+#articleview section article pre {
+    overflow-x: auto
+}
+
+#articleview section footer {
+    text-align: right
+}
+
+#articleview .comment {
+    padding: 10px 20px;
+}
+
+#articleview .comment > ul {
+    list-style: none;
+    margin: 0 0 10px 0;
+    padding: 0
+}
+
+#articleview .comment > ul > li {
+    margin-bottom: 10px;
+    padding: 10px 10px
+}
+
+#articleview .comment > ul > li:nth-child(2n) {
+    background: #eee
+}
+
+#articleview .comment > ul > li .comment_info {
+    font-size: 14px;
+    color: #006699;
+}
+
+#articleview .editor_notice {
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+#articleview .comment .editor {
+    overflow: auto;
+    width: 100%;
+    padding: 5px;
+    background: #f8f8f8;
+    border: none;
+    box-shadow: 0 0 5px #aaa inset;
+    border-radius: 2px;
+    min-height: 200px
+}
+
+.actionbar {
+    padding: 0 20px;
+    margin: 0;
+}
+
+.actionbar .md-button {
+    padding: 0 5px;
+    color: #aaa;
+    line-height: 28px;
+}
+
+.actionbar .md-button.active {
+    color: darkorange
+}
+
+.ngview {
+    margin: 40px 1.5% 30px 1.5%;
+    padding: 5px; /* background: #eee; box-shadow: 0 0 10px #000 inset;*/
+    border-radius: 5px;
+    overflow: auto;
+    height: inherit;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.2)
+}
+
+/*滚动条按下*/
+::-webkit-scrollbar-thumb:vertical:active {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.ngview.ng-enter, .ngview.ng-leave {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 98%;
+}
+
+.ngview.ng-enter {
+    -webkit-animation-name: fadeIn;
+    -moz-animation-name: fadeIn;
+    -o-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.ngview.ng-enter.ng-enter-active {
+}
+
+.ngview.ng-leave.ng-leave-active {
+    -webkit-animation-name: fadeOut;
+    -moz-animation-name: fadeOut;
+    -o-animation-name: fadeOut;
+    animation-name: fadeOut;
+}
+
+md-tabs.md-default-theme .md-header, md-button.md-primary {
+    background: url('imgs/bgs/4.png') !important;
+}
+
+md-card {
+    background: #fff
+}
+
+md-sidenav {
+    background: #eee
+}
+
+md-toolbar.md-default-theme {
+    background: url('imgs/bgs/4.png')
+}
+
+md-content {
+    background: transparent !important;
+}

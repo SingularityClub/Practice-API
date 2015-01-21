@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="Etrain" ng-controller="mainController">
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta property="wb:webmaster" content="403401a909a75b9f"/>
+    <meta name="viewport"
+          content="width=device-width,target-densitydpi=high-dpi,height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Tavern - Blog</title>
+    <link rel="stylesheet" href="assets/vendor/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://general.qiniudn.com/animate.css/animate.min.css">
+    <link rel="stylesheet" href="assets/vendor/angular-ui-select/dist/select.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/select2/3.5.2/select2.min.css">
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="assets/main.responsive.css">
+    <link href="http://cdn.bootcss.com/highlight.js/8.3/styles/github.min.css" rel="stylesheet">
+
+    <script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="assets/vendor/marked/lib/marked.js"></script>
+    <script src="http://cdn.bootcss.com/highlight.js/8.3/highlight.min.js"></script>
+    <script src="http://general.qiniudn.com/hammer/hammer.min.js"></script>
+    <script src="http://general.qiniudn.com/angular/1.3.6/angular.min.js"></script>
+    <script src="http://general.qiniudn.com/angular/1.3.6/angular-animate.min.js"></script>
+    <script src="http://general.qiniudn.com/angular/1.3.6/angular-aria.min.js"></script>
+    <script src="http://general.qiniudn.com/angular/1.3.6/angular-material.min.js"></script>
+    <script src="http://general.qiniudn.com/angular/1.3.6/angular-resource.min.js"></script>
+    <script src="http://general.qiniudn.com/angular/1.3.6/angular-route.min.js"></script>
+    <script src="http://general.qiniudn.com/angular/1.3.6/angular-sanitize.min.js"></script>
+    <script src="http://general.qiniudn.com/angular/1.3.6/paginate-anything.min.js"></script>
+    <script src="assets/vendor/angular-ui-ace/ui-ace.min.js"></script>
+    <script src="assets/vendor/angular-ui-select/dist/select.js"></script>
+
+    <script src="assets/config.js"></script>
+    <script src="assets/controllers/mainController.js"></script>
+    <script src="assets/controllers/articleController.js"></script>
+    <script src="assets/services/articleService.js"></script>
+    <script src="assets/services/commentService.js"></script>
+    <script src="assets/services/userService.js"></script>
+    <script src="assets/services/toolkitService.js"></script>
+</head>
+<body>
+<md-progress-linear ng-show="Config.Loading>0" md-mode="indeterminate" id="processbar"
+                    style="position: absolute; top:0; margin:0"></md-progress-linear>
+
+<md-content layout="row" id="content" style="height: 100%;">
+    <md-content flex class="panel-content" layout="column">
+        <div class="nav-pills">
+            <ul>
+                <li><a href="#/"><i class="fa fa-home fa-lg"></i></a></li>
+                <li ng-repeat="nav in NavTrace._traces"><a ng-href="{{nav.url}}" ng-bind="nav.title"></a></li>
+            </ul>
+            <ul ng-show="Config.User.id">
+                <li><i class="fa fa-user fa-fw fa-lg"></i><span ng-bind="Config.User.username"></span></li>
+                <li ng-click="GlobalFun.Logout()"><i class="fa fa-sign-out fa-fw fa-lg"></i></li>
+            </ul>
+        </div>
+        <div class="ngview animated" ng-view>
+
+        </div>
+        <div id="copyright">
+            Powered by Tavern @ 2014-2015 <a class="inherit pointer" target="_blank"
+                                             href="https://github.com/taverngoal/Tavern-Blog"><i
+                class="fa fa-fw fa-github fa-lg"></i></a>
+        </div>
+    </md-content>
+
+    <md-content flex="15" class="panel-side md-whiteframe-z5" layout="column" hide-md hide-sm
+                ng-hide="Config.Module=='Login'">
+        <h2 layout-align="center center" style="text-align: center">
+            <md-button class="md-button md-default-theme" style="color:#fff"><i
+                    class="fa fa-bars"></i>Tavern
+            </md-button>
+            <a href="http://weibo.com/u/1733849187" target="_blank">
+                <img src="assets/imgs/tavern.jpg" style="width: 50%; " class="img-circle"></a>
+        </h2>
+        <ul>
+            <li ng-class="{active:Config.Module=='Article'}">
+                <a href="#/article">博客</a>
+            </li>
+        </ul>
+        <div id="settingbar">
+            <md-button aria-label="accessibility" class="md-button md-default-theme" style="color:#fff"
+                       ng-href="#/login"><i
+                    class="fa fa-user"></i></md-button>
+            <md-button aria-label="accessibility" class="md-button md-default-theme" style="color:#fff"
+                       ng-href="#/setting"><i
+                    class="fa fa-cog"></i></md-button>
+        </div>
+    </md-content>
+</md-content>
+</body>
+</html>
