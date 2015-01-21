@@ -47,6 +47,7 @@ class PracticeAPI::UserApi < Grape::API
     params do
       optional :name, type: String
       optional :email, type: String
+      requires :old_password, type: String
       optional :password, type: String
       optional :gender, type: Integer
     end

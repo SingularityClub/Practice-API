@@ -1,11 +1,26 @@
-<div data-equalizer>
+<div data-equalizer ng-controller="utilsController">
     <div class="small-3 columns api-sider" data-equalizer-watch>
-        <ul class="side-nav">
-            <li><a href="#">Practice-API运行文档</a></li>
-            <li><a href="#/doc/blog_api">博客API文档</a></li>
-        </ul>
+        <div id="doc_nav">
+            <ul class="side-nav">
+                <li><a href="#/doc/blog_api">博客API文档</a>
+                    <ul>
+                        <li><a ng-click="go('info')">简介</a></li>
+                        <li><a ng-click="go('users')">用户</a>
+                            <ul>
+                                <li><a ng-click="go('login')">登录</a></li>
+                                <li><a ng-click="go('logout')">注销</a></li>
+                                <li><a ng-click="go('current_user')">获取当前登录用户</a></li>
+                                <li><a ng-click="go('edit_current_user')">按修改当前用户的资料</a></li>
+                            </ul>
+                        </li>
+                        <li><a ng-click="go('users')">博文</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="small-9 columns" data-equalizer-watch ng-bind-html="md_html">
+    <div class="small-9 columns" id="doc_content" data-equalizer-watch ng-bind-html="md_html">
     </div>
 </div>
 

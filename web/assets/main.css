@@ -1,4 +1,6 @@
-.api-sider {
+.api-sider { margin-top:30px;}
+.api-sider ul {
+    list-style: none;
     background: #eee
 }
 
@@ -8,7 +10,6 @@ code {
 
 pre code {
     display: block;
-    background: #f8f8f8;
     color: #000;
     margin-bottom: 20px
 }

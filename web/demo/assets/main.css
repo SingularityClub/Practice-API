@@ -249,6 +249,7 @@ li > a, a.inherit, .inherit a, li > a:hover, a.inherit:hover, .inherit a:hover, 
 }
 
 #article_index > ul.articles > li article {
+    transition: height 1s;
     height: 300px;
     overflow: hidden;
     line-height: 1.8em;

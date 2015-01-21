@@ -1,5 +1,4 @@
-# Practice-API
-API for SingularityClub
+# Practice-API简介
 
 ##API简介
 

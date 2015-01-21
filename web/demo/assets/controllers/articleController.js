@@ -272,4 +272,20 @@ angular.module("Etrain.Article", ["ngRoute", "Etrain.Service.Toolkit", 'Etrain.S
                 }
             };
         }])
+    .directive("slideToggle", [function () {
+        return {
+            link: function (scope, ele, attr) {
+                var content = $(ele).parents("li").find("article");
+                $(ele).addClass(content.height() == 300 ? "fa-chevron-down" : "fa-chevron-up").click(function () {
+                    if (content.height() == 300) {
+                        $(ele).removeClass("fa-chevron-down").addClass("fa-chevron-up");
+                        $(content).css({height: "auto"})
+                    } else {
+                        $(ele).removeClass("fa-chevron-up").addClass("fa-chevron-down");
+                        $(content).css({height: "300px  "})
+                    }
+                });
+            }
+        }
+    }])
 ;
