@@ -1,0 +1,14 @@
+.api-sider {
+    background: #eee
+}
+
+code {
+    color: firebrick
+}
+
+pre code {
+    display: block;
+    background: #f8f8f8;
+    color: #000;
+    margin-bottom: 20px
+}

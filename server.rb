@@ -6,7 +6,7 @@ class Application < Goliath::API
   use ActiveRecord::ConnectionAdapters::ConnectionManagement
 
   # use Goliath::Rack::Render, 'json'
-  use Rack::TryStatic, :root => 'web', :urls => %w[/], :try => %w(.html .js .css index.html)
+  use Rack::TryStatic, :root => 'web', :urls => %w[/], :try => %w(.html .js .css index.html .md)
 
   def response(env)
     ::PracticeAPI.call(env)

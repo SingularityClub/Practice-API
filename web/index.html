@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="assets/vendor/foundation/css/foundation.css">
+    <link href="http://cdn.bootcss.com/highlight.js/8.4/styles/vs.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/main.css">
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="assets/vendor/foundation/js/vendor/placeholder.js"></script>
+    <script src="assets/vendor/foundation/js/vendor/fastclick.js"></script>
+    <script src="assets/vendor/foundation/js/vendor/jquery.cookie.js"></script>
+    <script src="assets/vendor/foundation/js/vendor/modernizr.js"></script>
     <script src="assets/vendor/foundation/js/foundation.min.js"></script>
     <script src="assets/vendor/angular/angular.min.js"></script>
     <script src="assets/vendor/angular-resource/angular-resource.min.js"></script>
     <script src="assets/vendor/angular-route/angular-route.min.js"></script>
     <script src="assets/vendor/angular-sanitize/angular-sanitize.min.js"></script>
+
+    <script src="assets/vendor/marked/lib/marked.js"></script>
+    <script src="http://cdn.bootcss.com/highlight.js/8.4/highlight.min.js"></script>
 
     <script src="assets/controller/app_controller.js"></script>
     <script src="assets/controller/doc_controller.js"></script>
@@ -27,13 +36,17 @@
     <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
+            <li><a href="http://www.ngnice.com/docs/api" target="_blank">Angular文档</a></li>
+            <li class="active"><a href="#/doc">API文档</a></li>
             <li><a href="demo/" target="_blank">演示</a></li>
-            <li class="active"><a href="#/doc">文档</a></li>
         </ul>
     </section>
 </nav>
 <div ng-view>
 
 </div>
+<script>
+    $(document).foundation();
+</script>
 </body>
 </html>
