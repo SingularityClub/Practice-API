@@ -32,6 +32,15 @@ angular.module("Practice.Doc", ["ngRoute", "ngSanitize", "duScroll"])
                 $document.scrollToElementAnimated(angular.element("#" + id));
             }
         }])
+    .directive("scrollToTop", ["$document", function ($document) {
+        return {
+            link: function (scope, ele, attrs) {
+                angular.element(ele).click(function () {
+                    $document.scrollTopAnimated(0);
+                })
+            }
+        }
+    }])
     .service("markdownService", ["$sce", function ($sce) {
         marked.setOptions({
             highlight: function (code) {
@@ -44,12 +53,6 @@ angular.module("Practice.Doc", ["ngRoute", "ngSanitize", "duScroll"])
             };
             $.get(url).success(function (content) {
                 cb($sce.trustAsHtml(marked(content)));
-
-                console.log($("#doc_content").height())
-
-                $("#doc_nav").parent().height($("#doc_content").height());
-
-                $("#doc_nav").pin({containerSelector: ".api-sider", padding: {top: 30, bottom: 10}});
             });
         }
     }])

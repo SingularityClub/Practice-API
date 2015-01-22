@@ -2,10 +2,10 @@
     <div class="small-3 columns api-sider" data-equalizer-watch>
         <div id="doc_nav">
             <ul class="side-nav">
-                <li><a href="#/doc/blog_api">博客API文档</a>
+                <li><a ng-click="go('blog_api')"><i class="fa fa-book fa-fw"></i>博客API文档</a>
                     <ul>
-                        <li><a ng-click="go('info')">简介</a></li>
-                        <li><a ng-click="go('users')">用户</a>
+                        <li><a ng-click="go('info')"><i class="fa fa-newspaper-o fa-fw"></i>简介</a></li>
+                        <li><a ng-click="go('users')"><i class="fa fa-user fa-fw"></i>用户</a>
                             <ul>
                                 <li><a ng-click="go('login')">登录</a></li>
                                 <li><a ng-click="go('logout')">注销</a></li>
@@ -13,8 +13,33 @@
                                 <li><a ng-click="go('edit_current_user')">按修改当前用户的资料</a></li>
                             </ul>
                         </li>
-                        <li><a ng-click="go('users')">博文</a>
+                        <li><a ng-click="go('articles')"><i class="fa fa-file-text-o fa-fw"></i>博文</a>
+                            <ul>
+                                <li><a ng-click="go('all_article')">获取博文列表或按标签名获取</a></li>
+                                <li><a ng-click="go('all_article_anything')">获取博文列表或按标签名获取(paginate)</a></li>
+                                <li><a ng-click="go('add_article')">添加博文</a></li>
+                                <li><a ng-click="go('get_article')">按id获取博文</a></li>
+                                <li><a ng-click="go('edit_article')">按id修改博文</a></li>
+                                <li><a ng-click="go('delete_article')">按id删除博文</a></li>
+                            </ul>
                         </li>
+                        <li><a ng-click="go('comments')"><i class="fa fa-comment-o fa-fw"></i>评论</a>
+                            <ul>
+                                <li><a ng-click="go('all_comments')">按博文获取评论</a></li>
+                                <li><a ng-click="go('all_comments_anything')">按博文获取评论(paginate)</a></li>
+                                <li><a ng-click="go('add_comments')">给某博文添加一条评论</a></li>
+                                <li><a ng-click="go('delete_comments')">按id删除评论</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a ng-click="go('backend_doc')"><i class="fa fa-book fa-fw"></i>后端程序文档</a>
+                    <ul>
+                        <li><a ng-click="go('backend_info')"><i class="fa fa-newspaper-o fa-fw"></i>简介</a></li>
+                        <li><a ng-click="go('backend_funcs')"><i class="fa fa-th fa-fw"></i>API功能包含</a></li>
+                        <li><a ng-click="go('backend_run')"><i class="fa fa-send fa-fw"></i>运行此程序</a></li>
+                        <li><a ng-click="go('backend_test')"><i class="fa fa-cogs fa-fw"></i>Rspec测试</a></li>
+                        <li><a ng-click="go('backend_linux')"><i class="fa fa-linux fa-fw"></i>Linux生产环境运行</a></li>
                     </ul>
                 </li>
             </ul>
@@ -22,6 +47,7 @@
     </div>
     <div class="small-9 columns" id="doc_content" data-equalizer-watch ng-bind-html="md_html">
     </div>
+    <div id="scrollToTop" scroll-to-top><i class="fa fa-arrow-up"></i></div>
 </div>
 
 <script>

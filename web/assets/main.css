@@ -13,3 +13,17 @@ pre code {
     color: #000;
     margin-bottom: 20px
 }
+
+#scrollToTop {
+    font-size: 48px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    width: 72px;
+    text-align: center
+}
+
+#scrollToTop:hover {
+    background: #eee
+}

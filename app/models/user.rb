@@ -27,8 +27,7 @@ class User < ActiveRecord::Base
     cookies[$config['base']['auth_cookie_name']] = {
         value: "#{self.username}@#{hashcode}",
         expires: Time.now+7.days,
-        path: '/',
-        domain: '120.24.242.149',
+        path: '/'
     }
   end
 
