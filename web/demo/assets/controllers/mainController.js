@@ -103,12 +103,8 @@ angular.module("Etrain", [
             if (!$scope.Config.User)
                 return $location.path('/');
             $scope.user = userService.User.get({id: $scope.Config.User.id}, function () {
-                console.log(arguments)
             });
+
+
         }])
 ;
-
-//angular.module("Etrain", [
-//    'ngMaterial', 'Etrain.Service.User', 'ngAnimate', 'Etrain.Article', 'ngRoute',
-//    'Etrain.Service.Toolkit', 'Etrain.Service.Article'
-//]);

@@ -15,7 +15,7 @@ class PracticeAPI < Grape::API
   end
   namespace ':username' do
     after_validation do
-      error!({message: '请求错误，请保证你的用户名在4-32之间！'}.as_json, 400) unless params[:username].length>4 and params[:username].length<=32
+      error!({message: '请求错误，请保证你的用户名在4-32之间！'}.as_json, 400) unless params[:username].length>3 and params[:username].length<=32
 
       #领域用户
       @space_user= User.find_or_reg(params[:username], false)

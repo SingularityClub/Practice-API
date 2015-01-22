@@ -57,7 +57,7 @@ class PracticeAPI::UserApi < Grape::API
 
     desc '某用户的操作'
     params do
-      requires :id, type: String
+      requires :id, type: Integer
     end
     namespace ':id' do
       helpers ::ToolKit
