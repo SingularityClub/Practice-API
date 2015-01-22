@@ -9,6 +9,11 @@ class Application < Goliath::API
   use Rack::TryStatic, :root => 'web', :urls => %w[/], :try => %w(.html .js .css index.html .md)
 
   def response(env)
-    ::PracticeAPI.call(env)
+    result = ::PracticeAPI.call(env)
+    headers= result[1]
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = '*'
+    headers['Access-Control-Allow-Headers'] = 'Range-Unit,Range,Content-Type'
+    result
   end
 end

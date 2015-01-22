@@ -2,13 +2,6 @@ class PracticeAPI < Grape::API
   include Grape::ActiveRecord::Extension
   format :json
 
-
-  after do
-    header 'Access-Control-Allow-Origin', '*'
-    header 'Access-Control-Allow-Methods', '*'
-    # header 'Access-Control-Allow-Headers', 'Range-Unit,Range,Content-Type'
-  end
-
   rescue_from :all do |e|
     error_response status: 500, message: {message: e.message, class: e.class.name, statck: e.backtrace}.as_json
   end
