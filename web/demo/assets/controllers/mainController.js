@@ -17,6 +17,7 @@ angular.module("Etrain", [
                 templateUrl: 'views/index.html'
             });
 
+        $httpProvider.defaults.withCredentials = true;
         $httpProvider.interceptors.push(["$rootScope", "$q", "$timeout", function ($rootScope, $q, $timeout) {
             return {
                 'request': function (config) {

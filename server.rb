@@ -11,7 +11,7 @@ class Application < Goliath::API
   def response(env)
     result = ::PracticeAPI.call(env)
     headers= result[1]
-    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Origin'] = 'localhost,127.0.0.1'
     headers['Access-Control-Allow-Methods'] = '*'
     headers['Access-Control-Allow-Headers'] = 'Range-Unit,Range,Content-Type'
     result
