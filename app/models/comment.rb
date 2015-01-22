@@ -13,13 +13,15 @@ class Comment < ActiveRecord::Base
 
   class << self
     def post(article, content, current_user)
+      comment = nil
       Comment.transaction do
-        Comment.create! article_id: article.id, content: content, layer: article.all_comments.count+1,
-                        name: (current_user.name || current_user.username if current_user)
+        comment= Comment.create! article_id: article.id, content: content, layer: article.all_comments.count+1,
+                                 name: (current_user.name || current_user.username if current_user)
 
         article.comment_count+=1
         article.save!
       end
+      comment
     end
   end
 end

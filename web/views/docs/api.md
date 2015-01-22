@@ -195,9 +195,9 @@
 
 注意：博文没有分类的功能，取而代之的是`标签`，一篇博文**最多**可有`5个标签`。
 
-- **<a id='all_article'>GET `/[your name]/articles`   获取文章列表或按`标签`名获取</a>**
+- **<a id='all_article'>GET `/[your name]/articles`   获取博文列表或按`标签`名获取</a>**
 
-    获取文章列表，分页的，结果也是结构化的。如果使用**angular-paginate**则使用`/[your name]/articles/anything`
+    获取博文列表，分页的，结果也是结构化的。如果使用**angular-paginate**则使用`/[your name]/articles/anything`
 
     可以在参数中传入`tagname`，表示获取该标签下的博文。
 
@@ -206,14 +206,14 @@
         {
             'start':[int],  //可选，默认：0。从某索引开始获取
             'end':[int],    //可选，默认：100。截止到某索引完毕，最多获取100条，超过则按end=start+100算
-            'tagname':[string], //可选，若传入了标签名，则获取改标签下的文章
+            'tagname':[string], //可选，若传入了标签名，则获取改标签下的博文
         }
     ```
     返回
     ```js
         {
-            'data':[{                       //文章数组
-                'id':[int],                 //文章id
+            'data':[{                       //博文数组
+                'id':[int],                 //博文id
                 'title':[int],              //标题
                 'content':[string],             //内容
                 'views':[int],              //浏览次数
@@ -236,23 +236,23 @@
         }
     ```
 
-- **<a id='all_article'>GET `/[your name]/articles/anything`   获取文章列表或按`标签`名获取，配合angular-paginate-anything使用</a>**
+- **<a id='all_article'>GET `/[your name]/articles/anything`   获取博文列表或按`标签`名获取，配合angular-paginate-anything使用</a>**
 
-    获取文章列表，分页的。配合**angular-paginate-anything**使用。
+    获取博文列表，分页的。配合**angular-paginate-anything**使用。
 
     可以在参数中传入`tagname`，表示获取该标签下的博文。
 
     参数
     ```js
         {
-            'tagname':[string], //可选，若传入了标签名，则获取改标签下的文章
+            'tagname':[string], //可选，若传入了标签名，则获取改标签下的博文
         }
     ```
     返回
     ```js
         {
-            'data':[{                       //文章数组
-                'id':[int],                 //文章id
+            'data':[{                       //博文数组
+                'id':[int],                 //博文id
                 'title':[int],              //标题
                 'content':[string],             //内容
                 'views':[int],              //浏览次数
@@ -275,20 +275,24 @@
         }
     ```
 
-- **<a>POST `/[your name]/articles`  添加文章</a>**
+- **<a>POST `/[your name]/articles`  添加博文</a>**
+
+    `需要登录`
+
+    传入的标签是一个**字符串的数组**，如：['日志','转载']
 
     参数
     ```js
         {
-            'title':[string],       //标题
+            'title':[string]*,       //标题
             'tags':[Array:string]   //标签，数组，可选。用于分类，最多5个，操作则记录前5个
-            'content':[string]      //内容
+            'content':[string]*      //内容
         }
     ```
     返回
     ```js
         {
-            'id':[int],                 //文章id
+            'id':[int],                 //博文id
             'title':[int],              //标题
             'content':[string],             //内容
             'views':[int],              //浏览次数
@@ -299,18 +303,14 @@
         }
     ```
 
-- **<a>GET `/[your name]/articles/:id`   按id获取文章</a>**
+- **<a>GET `/[your name]/articles/:id`   按id获取博文</a>**
 
-    参数
-    ```js
-        {
-            'id':[int]  //文章id
-        }
-    ```
+    `:id`是博文的id
+
     返回
     ```js
         {
-            'id':[int],                 //文章id
+            'id':[int],                 //博文id
             'title':[int],              //标题
             'content':[string],             //内容
             'views':[int],              //浏览次数
@@ -329,18 +329,23 @@
         }
     ```
 
-- **<a>PUT `/[your name]/articles/:id`   按id修改文章内容</a>**
+- **<a>PUT `/[your name]/articles/:id`   按id修改博文内容</a>**
+
+    `需要登录`
+
+    `:id`是博文的id
 
     参数
     ```js
         {
-            'contnet':[string]      //文章内容
+            'title':[string]*        //博文标题
+            'content':[string]*      //博文内容
         }
     ```
     返回
     ```js
         {
-            'id':[int],                 //文章id
+            'id':[int],                 //博文id
             'title':[int],              //标题
             'content':[string],             //内容
             'views':[int],              //浏览次数
@@ -359,23 +364,20 @@
         }
     ```
 
-- **<a>DELETE `/[your name]/articles/:id`    按id删除文章</a>**
+- **<a>DELETE `/[your name]/articles/:id`    按id删除博文</a>**
 
-    参数
-    ```js
-        {
-            'id':[int]  //文章id
-        }
-    ```
+    `需要登录`
+
+    `:id`是博文id
 
 ###Comments 评论
 
-- **<a>GET `/[your name]/article/:id/comments`  按文章获取评论·分页</a>**
+- **<a>GET `/[your name]/article/:id/comments`  按博文获取评论·分页</a>**
 
     参数
     ```js
         {
-            'id':[int],      //文章id
+            'id':[int],      //博文id
             'start':[int],  //可选，默认：0。从某索引开始获取
             'end':[int],    //可选，默认：100。截止到某索引完毕，最多获取100条，超过则按end=start+100算
         }
@@ -391,5 +393,47 @@
             'count':[int],                  //本次分页条数
             'start':[int],                  //从某索引开始
             'end':[int]                     //到某索引结束
+        }
+    ```
+
+- **<a>GET `/[your name]/article/:id/comments/anything`  按博文获取评论，配合angular-paginate-anything使用</a>**
+
+    `:id`是博文id
+
+    返回
+    ```js
+        {
+            'data':[{                       //评论数组
+                'id':[int],             //评论id
+                'content':[string],         //评论内容
+                'created_at':[date]         //评论时间
+            }],
+            'count':[int],                  //本次分页条数
+            'start':[int],                  //从某索引开始
+            'end':[int]                     //到某索引结束
+        }
+    ```
+
+- **<a>POST `/[your name]/article/:id/comments` 给某博文添加一条评论
+
+    `:id`是博文id
+
+    评论只需要传入**内容**即可，评论人是按当前登录人获取的。比如，A在B博客里评论，则记录的是A的名字。若没有登录则是匿名。
+
+    参数
+    ```js
+        {
+            'content':[string]  //内容
+        }
+    ```
+
+    返回
+    ```js
+        {
+            'id':[int],             //评论id
+            'content':[string],     //内容
+            'layer':[int],          //第N楼
+            'name':[string],        //评论人名
+            'ip':[string]           //评论所属ip
         }
     ```
