@@ -53,11 +53,15 @@ angular.module("Etrain", [
             $rootScope.GlobalFun = {
                 Logout: function () {
                     userService.Logout();
+                },
+                RefreshUser: function () {
+                    $rootScope.Config.User =
+                        userService.User.current(function (content) {
+                        });
                 }
             };
-            $rootScope.Config.User =
-                userService.User.current(function (content) {
-                });
+            $rootScope.GlobalFun.RefreshUser();
+
             $rootScope.NavTrace = $toolkit.NavTrace;
             $rootScope.Toolkit = $toolkit;
 
@@ -98,15 +102,29 @@ angular.module("Etrain", [
                 })
             };
         }])
-    .controller("settingController", ["$scope", "userService", "$mdToast", "$location",
-        function ($scope, userService, $mdToast, $location) {
+    .controller("settingController", ["$scope", "userService", "$mdToast", "$location", "$toolkit",
+        function ($scope, userService, $mdToast, $location, $toolkit) {
             if (!$scope.Config.User)
                 return $location.path('/');
             $scope.NavTrace.unshift("设置", "#/setting");
-            $scope.user = userService.User.current(function () {
-                console.log($scope.user)
+            $scope.user = userService.User.current(function (user) {
+                user.gender = String(user.gender);
             });
 
+            $scope.SelfEdit = function (user) {
+                $scope.user.$editCurrent({
+                    old_password: user.old_password,
+                    name: user.name,
+                    email: user.email,
+                    password: user.password,
+                    gender: user.gender
+                }, function (user) {
+                    user.gender = String(user.gender);
+                    $toolkit.Notice.show("修改成功，若修改了密码则需要重新登陆");
+
+                    $scope.GlobalFun.RefreshUser();
+                })
+            }
 
         }])
 ;

@@ -1,3 +1,26 @@
 <div id="setting">
+    <div class="panel panel-primary" style="border: none">
+        <div class="panel-heading" style="background: url('assets/imgs/bgs/4.png')">我的资料</div>
+        <div class="panel-body" layout="column">
+            <form layout="column" name="edit_form">
+                <md-text-float flex="40" label="账号" ng-model="user.username" disabled></md-text-float>
+                <md-text-float flex="40" label="电子邮件" class="line" type="email" ng-model="user.email"></md-text-float>
 
+                <md-text-float label="密码" flex="50" class="line" ng-model="user.password"
+                               type="password"></md-text-float>
+
+                <md-text-float label="验证密码*" class="line" ng-model="user.old_password" required
+                               type="password"></md-text-float>
+                <md-radio-group ng-model="user.gender" required style="text-align: center">
+                    <md-radio-button value="0">保密</md-radio-button>
+                    <md-radio-button value="1">男</md-radio-button>
+                    <md-radio-button value="2">女</md-radio-button>
+                </md-radio-group>
+                <md-button class="md-primary md-raised"
+                           ng-click="SelfEdit(user)" id="login_button" ng-disabled="edit_form.$invalid"
+                           style="width: 100%">修改
+                </md-button>
+            </form>
+        </div>
+    </div>
 </div>

@@ -9,7 +9,8 @@ angular.module("Etrain.Service.User", ["ngResource"])
             login: {method: "post", url: config.prefix + "/users/login"},
             reg: {method: "post", url: config.prefix + "/users/reg"},
             current: {method: "get", url: config.prefix + "/users/current"},
-            logout: {method: "post", url: config.prefix + "/users/logout"}
+            logout: {method: "post", url: config.prefix + "/users/logout"},
+            editCurrent: {method: "put", url: config.prefix + "/users/current"}
         });
         this.Logout = function () {
             $this.User.logout(function () {

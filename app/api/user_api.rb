@@ -45,14 +45,16 @@ class PracticeAPI::UserApi < Grape::API
 
     desc '修改当前用户'
     params do
+      requires :old_password, type: String
       optional :name, type: String
       optional :email, type: String
-      requires :old_password, type: String
       optional :password, type: String
       optional :gender, type: Integer
     end
     put :current do
-      @current_user.update! params[:name], params[:email], params[:password], params[:gender]
+      require_authorized!
+
+      @current_user.update! params[:name], params[:email], params[:password], params[:gender], params[:old_password]
     end
 
     desc '某用户的操作'
@@ -62,25 +64,26 @@ class PracticeAPI::UserApi < Grape::API
     namespace ':id' do
       helpers ::ToolKit
       after_validation do
+        require_admin!
+
         @user = User.find_by(id: params[:id])
       end
 
       desc '获取该用户数据'
       get :info do
-        require_admin!
-
         @user.safe_attributes
       end
 
       desc '修改该用户'
       params do
+        requires :old_password, type: String
         optional :name, type: String
         optional :email, type: String
         optional :password, type: String
         optional :gender, type: Integer
       end
       put do
-        @user.update! params[:name], params[:email], params[:password], params[:gender]
+        @user.update! params[:name], params[:email], params[:password], params[:gender], params[:old_password]
       end
 
       desc '删除该用户'

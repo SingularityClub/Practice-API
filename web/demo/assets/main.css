@@ -16,7 +16,7 @@ body {
     display: inline-block
 }
 
-#login label {
+md-input-group label {
     margin: 0;
 }
 

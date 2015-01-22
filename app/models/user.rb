@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
     self.as_json(only: [:username, :id, :name, :email, :gender])
   end
 
-  def update!(name, email, password, gender)
+  def update!(name, email, password, gender, old_password)
+    raise '密码错误，拒绝修改！' unless User.auth(self.username, Digest::SHA1.hexdigest(old_password+self.salt))
+
     self.name, self.email, self.gender = name, email, gender
     change_password password if password
     self.save!
@@ -18,6 +20,8 @@ class User < ActiveRecord::Base
   end
 
   def change_password(password)
+    raise '密码最低长度是6位' if password.length<6
+
     self.salt = Digest::SHA1.hexdigest(rand.to_s) unless self.salt
     self.encrypted_password = Digest::SHA1.hexdigest(password+self.salt)
   end
@@ -49,7 +53,6 @@ class User < ActiveRecord::Base
 
     def login(username='', password='')
       user = User.find_by(username: username)
-      p user
       raise '没有该用户！' unless user
 
       encrypted_password = Digest::SHA1.hexdigest(password+user.salt)
