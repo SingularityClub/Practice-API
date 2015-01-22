@@ -11,14 +11,14 @@ class PracticeAPI < Grape::API
   require "#{__dir__}/tag_api"
 
   params do
-    requires :username, type: String
+    requires :space_name, type: String
   end
-  namespace ':username' do
+  namespace ':space_name' do
     after_validation do
-      error!({message: '请求错误，请保证你的用户名在4-32之间！'}.as_json, 400) unless params[:username].length>3 and params[:username].length<=32
+      error!({message: '请求错误，请保证你的用户名在4-32之间！'}.as_json, 400) unless params[:space_name].length>3 and params[:space_name].length<=32
 
       #领域用户
-      @space_user= User.find_or_reg(params[:username], false)
+      @space_user= User.find_or_reg(params[:space_name], false)
       #当前登录用户
       @current_user= User.auth_with_cookie cookies
     end

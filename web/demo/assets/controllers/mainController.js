@@ -36,7 +36,7 @@ angular.module("Etrain", [
                     $rootScope.Config.Loading -= 1;
                     if (rejection.status == 500)
                         $rootScope.Toolkit.exceptionHandler.Handle(rejection.data);
-                    if (rejection.status == 401 && "message" in rejection.data)
+                    if ((rejection.status == 401 || rejection.status == 403) && "message" in rejection.data)
                         $rootScope.Toolkit.exceptionHandler.Handle(rejection.data);
                     return $q.reject(rejection);
                 }
