@@ -14,7 +14,7 @@ angular.module("Etrain", [
             })
             .when("/setting", {
                 controller: 'settingController',
-                templateUrl: 'views/index.html'
+                templateUrl: 'views/setting.html'
             });
 
         $httpProvider.defaults.withCredentials = true;
@@ -102,7 +102,9 @@ angular.module("Etrain", [
         function ($scope, userService, $mdToast, $location) {
             if (!$scope.Config.User)
                 return $location.path('/');
-            $scope.user = userService.User.get({id: $scope.Config.User.id}, function () {
+            $scope.NavTrace.unshift("设置", "#/setting");
+            $scope.user = userService.User.current(function () {
+                console.log($scope.user)
             });
 
 

@@ -106,7 +106,7 @@
         }
     ```
 
-- **<a>GET `/[your name]/users/:id`  按id获取用户信息</a>**
+- **<a>GET `/[your name]/users/:id/info`  按id获取用户信息</a>**
 
     - `需要管理员权限`，请忽略此API
 

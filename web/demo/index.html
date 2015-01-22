@@ -54,7 +54,8 @@
                 <li ng-repeat="nav in NavTrace._traces"><a ng-href="{{nav.url}}" ng-bind="nav.title"></a></li>
             </ul>
             <ul ng-show="Config.User.id">
-                <li><i class="fa fa-user fa-fw fa-lg"></i><span ng-bind="Config.User.username"></span></li>
+                <li><a href="#/setting"><i class="fa fa-user fa-fw fa-lg"></i><span
+                        ng-bind="Config.User.username"></span></a></li>
                 <li ng-click="GlobalFun.Logout()"><i class="fa fa-sign-out fa-fw fa-lg"></i></li>
             </ul>
         </div>

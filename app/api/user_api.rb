@@ -66,7 +66,7 @@ class PracticeAPI::UserApi < Grape::API
       end
 
       desc '获取该用户数据'
-      get do
+      get :info do
         require_admin!
 
         @user.safe_attributes

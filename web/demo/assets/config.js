@@ -1,5 +1,5 @@
 window.config = {
-    prefix: "http://tavern.cc:9000/tavern"
+    prefix: "/tavern"
 };
 
 Date.prototype.Format = function (fmt) { //author: meizz
