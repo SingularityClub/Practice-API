@@ -17,15 +17,13 @@
 
     本次集训，要求的前端框架是angularjs，所以传输数据默认是`json`。
 
-- **以下API文档**
-
 ### **Users 用户** <span id='users'></span>
-- **<a id="user_all">GET `/[your name]/users`    获取所有用户<a>**
+- **<a id="user_all">GET `/[your name]/users` 获取所有用户</a>**
 
     `需要管理员权限`，请忽略此API
 
-    返回：
-    ```javascript
+    返回
+    ```js
         [{
             'username':[string],//用户名
             'name':[string],    //真实姓名
@@ -41,15 +39,15 @@
 
     为了让开发简单，精简用户管理。
 
-    参数：
+    参数
     ```javascript
         {
-            'username':[string],
-            'password':[string],
+            'username':[string]*,
+            'password':[string]*,
             'gender':[int]        //可选。0:未知，1:男，2:女
         }
     ```
-    返回：
+    返回
     ```javascript
         {
             'id':[int],     //id
@@ -66,11 +64,13 @@
 
     登录之后会向你的浏览器写入cookie，记录你的登录信息。7天的有效时间，之后调用api不需要重复登陆。
 
-    参数：
+    若是第一次登陆，默认密码为：`123456`
+
+    参数
     ```js
         {
-            'username':[string],
-            'password':[string]
+            'username':[string]*,
+            'password':[string]*
         }
     ```
     返回
@@ -85,9 +85,15 @@
     ```
 
 - **<a id="logout">POST `/[your name]/users/logout`    注销</a>**
-    >   清除cookie
+
+    清除cookie，之后所有`需要登录`的api将不能使用。
+
 
 - **<a id="current_user">GET `/[your name]/users/current`    获取当前登录用户</a>**
+
+    `需要登陆`
+
+    登录之后，从cookie里读取信息，返回当前登录的用户。没登陆则返回：null
 
     返回
     ```js
@@ -101,6 +107,8 @@
     ```
 
 - **<a>GET `/[your name]/users/:id`  按id获取用户信息</a>**
+
+    `需要管理员权限`，请忽略此API
 
     参数
     ```js
@@ -121,11 +129,14 @@
 
 - **<a id="edit_current_user">PUT `/[your name]/users/current`  按修改当前用户的资料</a>**
 
+    `需要登陆`
+
+    不修改密码，则将`password`留空，`old_password`为校验密码，必填。
+
     参数
     ```js
         {
-            'id':[int],         //用户id
-            'old_password':[string] //旧密码
+            'old_password':[string]* //旧密码
             'name':[string],        //姓名
             'email':[string],       //电子邮件
             'password':[string],    //密码，不修改密码留空，修改密码后需要重新登录
@@ -145,10 +156,12 @@
 
 - **<a>PUT `/[your name]/users/:id`  按ID修改用户</a>**
 
+    `需要管理员权限`，请忽略此API
+
     参数
     ```js
         {
-            'id':[int],         //用户id
+            'id':[int]*,         //用户id
             'name':[string],        //姓名
             'email':[string],       //电子邮件
             'password':[string],    //密码，不修改密码留空，修改密码后需要重新登录
@@ -168,6 +181,8 @@
 
 - **<a>DELETE `[your name]/users/:id`    按ID删除用户</a>**
 
+    `需要管理员权限`，请忽略此API
+
     参数
     ```js
         {
@@ -176,15 +191,60 @@
     ```
 
 
-### **Article   文章**
+### **Article   博文**
 
-- **<a>GET `/[your name]/articles`   获取文章列表或按标签名获取</a>**
+注意：博文没有分类的功能，取而代之的是`标签`，一篇博文**最多**可有`5个标签`。
+
+- **<a id='all_article'>GET `/[your name]/articles`   获取文章列表或按`标签`名获取</a>**
+
+    获取文章列表，分页的，结果也是结构化的。如果使用**angular-paginate**则使用`/[your name]/articles/anything`
+
+    可以在参数中传入`tagname`，表示获取该标签下的博文。
 
     参数
     ```js
         {
             'start':[int],  //可选，默认：0。从某索引开始获取
             'end':[int],    //可选，默认：100。截止到某索引完毕，最多获取100条，超过则按end=start+100算
+            'tagname':[string], //可选，若传入了标签名，则获取改标签下的文章
+        }
+    ```
+    返回
+    ```js
+        {
+            'data':[{                       //文章数组
+                'id':[int],                 //文章id
+                'title':[int],              //标题
+                'content':[string],             //内容
+                'views':[int],              //浏览次数
+                'user_id':[int],            //作者id
+                'created_at':[date],            //发表日期
+                'comment_count':[int],      //评论个数
+                'updated_at':[date],            //修改日期
+                'user':{                        //作者实体
+                    'id':[int],             //作者id
+                    'username':[string],        //作者用户名
+                    'name':[string]             //作者姓名
+                },
+                'tags':[{                       //标签数组
+                    'title':[string]            //标签标题
+                    }]
+            }],
+            'count':[int],                  //本次分页条数
+            'start':[int],                  //从某索引开始
+            'end':[int]                     //到某索引结束
+        }
+    ```
+
+- **<a id='all_article'>GET `/[your name]/articles/anything`   获取文章列表或按`标签`名获取，配合angular-paginate-anything使用</a>**
+
+    获取文章列表，分页的。配合**angular-paginate-anything**使用。
+
+    可以在参数中传入`tagname`，表示获取该标签下的博文。
+
+    参数
+    ```js
+        {
             'tagname':[string], //可选，若传入了标签名，则获取改标签下的文章
         }
     ```
@@ -239,7 +299,7 @@
         }
     ```
 
-- **<a>GET '/[your name]/articles/:id'   按id获取文章</a>**
+- **<a>GET `/[your name]/articles/:id`   按id获取文章</a>**
 
     参数
     ```js

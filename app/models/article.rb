@@ -33,6 +33,7 @@ class Article < ActiveRecord::Base
       length = _end - start
       length = 100 if length>100
       tag = Tag.find_by(title: tag_name)
+      raise '没有改标签' unless tag
       return tag.articles.instance_exec(&article_scope).select(:id, :title, :content, :views, :user_id, :created_at, :comment_count, :updated_at)
                  .order(created_at: :desc).offset(start).limit(length+1), tag.articles.count
     end
