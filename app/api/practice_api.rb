@@ -1,6 +1,12 @@
 class PracticeAPI < Grape::API
   include Grape::ActiveRecord::Extension
   format :json
+  helpers ::ToolKit
+
+  after do
+    require_domain = headers['Referer']
+    header 'Access-Control-Allow-Origin', require_domain[0...require_domain.to_s.index(?/, 7)]
+  end
 
   rescue_from :all do |e|
     error_response status: 500, message: {message: e.message, class: e.class.name, statck: e.backtrace}.as_json

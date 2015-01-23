@@ -10,11 +10,11 @@ class Application < Goliath::API
 
   def response(env)
     result = ::PracticeAPI.call(env)
-    headers= result[1]
-    headers['Access-Control-Allow-Origin'] = 'http://localhost:63342'
-    headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE,HEADER,OPTIONS'
-    headers['Access-Control-Allow-Headers'] = 'Range-Unit,Range,Content-Type,Origin '
-    headers['Access-Control-Allow-Credentials'] = 'true'
+    headers_res= result[1]
+    headers_res['Access-Control-Allow-Origin'] = 'http://localhost:63342' unless headers_res['Access-Control-Allow-Origin']
+    headers_res['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE,HEADER,OPTIONS'
+    headers_res['Access-Control-Allow-Headers'] = 'Range-Unit,Range,Content-Type,Origin '
+    headers_res['Access-Control-Allow-Credentials'] = 'true'
     result
   end
 end
