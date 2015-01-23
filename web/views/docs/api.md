@@ -3,10 +3,6 @@
 
 学弟学妹们，由于本博客程序本是设计成团队博客。但考虑到集训的时间关系，将精简成单用户博客。采用以下处理方式：
 
-- **调用API的时候请加上绝对地址**
-
-    由于阿里云才开始租用，域名需要备案，所以本次的`api调用从域名改为ip`：**http://120.24.242.149/**
-
 - **将前缀修改**
 
     `/api/articles` =>  `/[your name]/articles`
@@ -16,8 +12,14 @@
 
     如：`/tavern/articles` tavern就是我的用户名。
 
-    配合网址就是：`http://120.24.242.149/tavern/articles`  这里的tavern可以改成你的用户名。
+    配合网址就是：`http://api.tavern.name/tavern/articles`  这里的tavern可以改成你的用户名。
     这个api的意思就是获取你所有的博文。具体的api请见下面板块。
+
+- **调用API的时候请加上绝对地址**
+
+    请在下面的API前加上域名：**http://api.tavern.name/**
+
+    如：`http://api.tavern.name/lucky/users/login`
 
 - **精简用户管理**
 

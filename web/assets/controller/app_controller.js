@@ -7,11 +7,11 @@ angular.module("Practice", ["ngRoute", "Practice.Doc"])
             .when("/", {
                 controller: 'homeController',
                 templateUrl: 'views/home.html'
-            })
+            }).otherwise({redirectTo: '/'})
     }])
     .controller("mainController", ["$scope", "$location", function ($scope, $location) {
     }])
-    .controller("homeController", ["$scope", function ($scope) {
+    .controller("homeController", ["$scope", "$location", function ($scope, $location) {
         $location.path("doc/blog_api");
 
     }])
