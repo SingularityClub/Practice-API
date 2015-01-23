@@ -2,12 +2,22 @@
 ### **简介** <span id="info"></span>
 
 学弟学妹们，由于本博客程序本是设计成团队博客。但考虑到集训的时间关系，将精简成单用户博客。采用以下处理方式：
+
+- **调用API的时候请加上绝对地址**
+
+    由于阿里云才开始租用，域名需要备案，所以本次的`api调用从域名改为ip`：**http://120.24.242.149/**
+
 - **将前缀修改**
 
-    如： `/api/articles` =>  `/[your name]/articles`
+    `/api/articles` =>  `/[your name]/articles`
 
     前缀（`/api`）改成你的`/用户名`（自由取值），本程序会自动为你这个用户名创建一个博客，并且与其他人的博客分离开来。
     默认密码为：`123456`。通过PUT `/[your name]/users/current`的`api`来修改你的密码。
+
+    如：`/tavern/articles` tavern就是我的用户名。
+
+    配合网址就是：`http://120.24.242.149/tavern/articles`  这里的tavern可以改成你的用户名。
+    这个api的意思就是获取你所有的博文。具体的api请见下面板块。
 
 - **精简用户管理**
 
@@ -442,7 +452,7 @@
     - `:comment_id`是评论id
 
 
-# Practice-API简介 <span id="backend_doc"></span>
+# Practice-API简介，集训期间请忽略以下文档 <span id="backend_doc"></span>
 
 ##简介    <span id="backend_doc"></span>
 

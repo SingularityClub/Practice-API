@@ -12,6 +12,10 @@ angular.module("Practice.Doc", ["ngRoute", "ngSanitize", "duScroll"])
                 controller: 'docBlogApiController',
                 templateUrl: 'views/docs/index.html'
             })
+            .when("/doc/package", {
+                controller: 'docPackageController',
+                templateUrl: 'views/docs/package.html'
+            })
     }])
     .controller("docHomeController", ["$scope", "markdownService", function ($scope, markdownService) {
         markdownService.load('views/docs/app.md', function (content) {
@@ -22,6 +26,12 @@ angular.module("Practice.Doc", ["ngRoute", "ngSanitize", "duScroll"])
     }])
     .controller("docBlogApiController", ["$scope", "markdownService", function ($scope, markdownService) {
         markdownService.load('views/docs/api.md', function (content) {
+            $scope.md_html = content;
+            $scope.$$phase || $scope.$apply();
+        });
+    }])
+    .controller("docPackageController", ["$scope", "markdownService", function ($scope, markdownService) {
+        markdownService.load('views/docs/package.md', function (content) {
             $scope.md_html = content;
             $scope.$$phase || $scope.$apply();
         });

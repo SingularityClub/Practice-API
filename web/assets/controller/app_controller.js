@@ -10,9 +10,9 @@ angular.module("Practice", ["ngRoute", "Practice.Doc"])
             })
     }])
     .controller("mainController", ["$scope", "$location", function ($scope, $location) {
-        $location.path("doc/blog_api");
     }])
     .controller("homeController", ["$scope", function ($scope) {
+        $location.path("doc/blog_api");
 
     }])
 ;
