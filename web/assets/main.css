@@ -11,7 +11,8 @@ code {
 pre code {
     display: block;
     color: #000;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    overflow: auto;
 }
 
 #scrollToTop {
