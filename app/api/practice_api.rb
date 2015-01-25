@@ -3,16 +3,16 @@ class PracticeAPI < Grape::API
   format :json
   helpers ::ToolKit
 
-  after do
-    require_domain = headers['Referer']
+  before do
+    env[:require_domain] = require_domain = headers['Referer']
     header 'Access-Control-Allow-Origin', require_domain[0...require_domain.to_s.index(?/, 7)]
   end
 
   rescue_from :all do |e|
-    require_domain = headers['Referer']
-
+    require_domain = env[:require_domain]
+    # error!({message: e.message, class: e.class.name, statck: e.backtrace}.as_json,500, {:'Access-Control-Allow-Origin' => require_domain[0...require_domain.to_s.index(?/, 7)]})
     error_response status: 500, message: {message: e.message, class: e.class.name, statck: e.backtrace}.as_json,
-                   header: {'Access-Control-Allow-Origin' => require_domain[0...require_domain.to_s.index(?/, 7)]}
+                   headers: {'Access-Control-Allow-Origin' => require_domain[0...require_domain.to_s.index(?/, 7)]}
   end
 
   require "#{__dir__}/user_api"
