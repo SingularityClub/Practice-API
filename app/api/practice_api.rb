@@ -9,7 +9,10 @@ class PracticeAPI < Grape::API
   end
 
   rescue_from :all do |e|
-    error_response status: 500, message: {message: e.message, class: e.class.name, statck: e.backtrace}.as_json
+    require_domain = headers['Referer']
+
+    error_response status: 500, message: {message: e.message, class: e.class.name, statck: e.backtrace}.as_json,
+                   header: {'Access-Control-Allow-Origin' => require_domain[0...require_domain.to_s.index(?/, 7)]}
   end
 
   require "#{__dir__}/user_api"

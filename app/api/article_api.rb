@@ -32,7 +32,7 @@ class PracticeAPI::ArticleApi < Grape::API
     desc '添加文章'
     params do
       requires :title, type: String
-      requires :tags, type: Array
+      optional :tags, type: Array
       requires :content, type: String
     end
     post do
