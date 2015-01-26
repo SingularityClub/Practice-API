@@ -12,6 +12,8 @@ class Application < Goliath::API
     result = ::PracticeAPI.call(env)
     headers_res= result[1]
 
+    headers_res['Range']=headers_res['Content-Range'] if headers_res['Content-Range']
+
     headers_res['Access-Control-Allow-Origin'] = 'http://localhost:63342' unless headers_res['Access-Control-Allow-Origin']
     headers_res['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE,HEADER,OPTIONS'
     headers_res['Access-Control-Allow-Headers'] = 'Range-Unit,Range,Content-Type,Origin '
