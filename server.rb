@@ -18,6 +18,8 @@ class Application < Goliath::API
     headers_res['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE,HEADER,OPTIONS'
     headers_res['Access-Control-Allow-Headers'] = 'Range-Unit,Range,Content-Type,Origin '
     headers_res['Access-Control-Allow-Credentials'] = 'true'
+    headers_res['Access-Control-Expose-Headers'] = 'Content-Range,Accept-Ranges'
+
     result
   end
 end
