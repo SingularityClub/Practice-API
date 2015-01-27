@@ -380,7 +380,7 @@
 
 ### **Comments 评论** <span id="comments"></span>
 
-- **<a id="all_comments">GET `/[your name]/article/:id/comments`  按博文获取评论·分页</a>**
+- **<a id="all_comments">GET `/[your name]/articles/:id/comments`  按博文获取评论·分页</a>**
 
     - 参数
     ```js
@@ -405,7 +405,7 @@
         }
     ```
 
-- **<a id="all_comments_anything">GET `/[your name]/article/:id/comments/anything`  按博文获取评论，配合angular-paginate-anything使用</a>**
+- **<a id="all_comments_anything">GET `/[your name]/articles/:id/comments/anything`  按博文获取评论，配合angular-paginate-anything使用</a>**
 
     - `:id`是博文id
 
@@ -423,7 +423,7 @@
         }
     ```
 
-- **<a id="add_comments">POST `/[your name]/article/:id/comments` 给某博文添加一条评论</a>**
+- **<a id="add_comments">POST `/[your name]/articles/:id/comments` 给某博文添加一条评论</a>**
 
     评论只需要传入**内容**即可，评论人是按当前登录人获取的。比如，A在B博客里评论，则记录的是A的名字。若没有登录则是匿名。
 
@@ -447,7 +447,7 @@
         }
     ```
 
-- **<a id="delete_comments">DELETE `/[your name]/article/:id/comments/:comment_id` 按id删除评论</a>**
+- **<a id="delete_comments">DELETE `/[your name]/articles/:id/comments/:comment_id` 按id删除评论</a>**
 
     - `:id`是博文id
 
