@@ -256,29 +256,24 @@
     ```
     - 返回
     ```js
-        {
-            'data':[{                       //博文数组
-                'id':[int],                 //博文id
-                'title':[int],              //标题
-                'content':[string],             //内容
-                'views':[int],              //浏览次数
-                'user_id':[int],            //作者id
-                'created_at':[date],            //发表日期
-                'comment_count':[int],      //评论个数
-                'updated_at':[date],            //修改日期
-                'user':{                        //作者实体
-                    'id':[int],             //作者id
-                    'username':[string],        //作者用户名
-                    'name':[string]             //作者姓名
-                },
-                'tags':[{                       //标签数组
-                    'title':[string]            //标签标题
-                    }]
-            }],
-            'count':[int],                  //本次分页条数
-            'start':[int],                  //从某索引开始
-            'end':[int]                     //到某索引结束
-        }
+        [{                       //博文数组
+            'id':[int],                 //博文id
+            'title':[int],              //标题
+            'content':[string],             //内容
+            'views':[int],              //浏览次数
+            'user_id':[int],            //作者id
+            'created_at':[date],            //发表日期
+            'comment_count':[int],      //评论个数
+            'updated_at':[date],            //修改日期
+            'user':{                        //作者实体
+                'id':[int],             //作者id
+                'username':[string],        //作者用户名
+                'name':[string]             //作者姓名
+            },
+            'tags':[{                       //标签数组
+                'title':[string]            //标签标题
+                }]
+        }]
     ```
 
 - **<a id='add_article'>POST `/[your name]/articles`  添加博文</a>**
@@ -411,16 +406,11 @@
 
     - 返回
     ```js
-        {
-            'data':[{                       //评论数组
-                'id':[int],             //评论id
-                'content':[string],         //评论内容
-                'created_at':[date]         //评论时间
-            }],
-            'count':[int],                  //本次分页条数
-            'start':[int],                  //从某索引开始
-            'end':[int]                     //到某索引结束
-        }
+        [{                       //评论数组
+            'id':[int],             //评论id
+            'content':[string],         //评论内容
+            'created_at':[date]         //评论时间
+        }]
     ```
 
 - **<a id="add_comments">POST `/[your name]/articles/:id/comments` 给某博文添加一条评论</a>**
