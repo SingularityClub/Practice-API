@@ -410,6 +410,8 @@
             'id':[int],             //评论id
             'content':[string],         //评论内容
             'created_at':[date]         //评论时间
+            'layer':[int],          //第N楼
+            'name':[string],        //评论人名
         }]
     ```
 
