@@ -26,4 +26,24 @@ module ToolKit
   def require_admin!
     error!({message: '需要超级权限！'}.as_json, 403) unless @current_user&&@current_user.admin
   end
+
+  def auth_with_cookie_or_header
+    User.auth_with_cookie(cookies) || User.auth_with_header(headers)
+  end
+
+  def cors_request
+    if headers['Referer']
+      env[:require_domain] = require_domain = headers['Referer']
+      header 'Access-Control-Allow-Origin', require_domain[0...require_domain.to_s.index(?/, 7)]
+    end
+  end
+
+  def cors_response
+    headers = {}
+    if env[:require_domain]
+      require_domain = env[:require_domain]
+      headers['Access-Control-Allow-Origin'] = require_domain[0...require_domain.to_s.index(?/, 7)]
+    end
+    headers
+  end
 end

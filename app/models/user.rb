@@ -68,6 +68,17 @@ class User < ActiveRecord::Base
       }
     end
 
+    def auth_with_header(headers={})
+      token = headers['Auth-Token']
+      return nil unless token
+      username, password = token.split(':')
+      user = User.find_by(username: username)
+      if user
+        encrypted_password = Digest::SHA1.hexdigest(password+user.salt)
+        User.auth(username, encrypted_password)
+      end
+    end
+
     def auth_with_cookie(cookies={})
       cookie = cookies[$config['base']['auth_cookie_name']]
       return nil unless cookie
