@@ -24,9 +24,9 @@ class PracticeAPI < Grape::API
       @current_user= auth_with_cookie_or_header #  User.auth_with_cookie cookies
     end
 
-    mount PracticeAPI::UserApi => '/'
-    mount PracticeAPI::ArticleApi => '/'
-    mount PracticeAPI::TagApi => '/'
+    mount PracticeAPI::UserApi #=> '/'
+    mount PracticeAPI::ArticleApi #=> '/'
+    mount PracticeAPI::TagApi #=> '/'
   end
 
 end
