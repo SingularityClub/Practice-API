@@ -7,7 +7,7 @@ use Rack::Cors do
              :expose => %w(Content-Range Accept-Ranges), :credentials => true
   end
 end
-use Rack::TryStatic, :root => 'web', :urls => %w[/], :try => %w(.html .js .css index.html .md)
+use Rack::TryStatic, :root => "#{__dir__}/web", :urls => %w[/], :try => %w(.html .js .css index.html .md)
 
 map '/' do
   run PracticeAPI
