@@ -10,6 +10,8 @@ class Article < ActiveRecord::Base
   end
 
   def paginate_comments(start=0, _end =100)
+    start||=0
+    _end||=100
     length = _end - start
     length = 100 if length>100
     return self.all_comments.offset(start).limit(length+1), self.all_comments.count

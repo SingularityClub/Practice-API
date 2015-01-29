@@ -197,6 +197,20 @@
     - `:id`是用户id
 
 
+### **Tag   标签** <span id="tags"></span>
+
+- **<a id='all_tag'>GET `/[your name]/tags` 获取所有标签列表</a>**
+
+    获取所有标签，没有分页
+
+    - 返回
+    ```js
+        [{
+            'id':[int],         //标签id，无用
+            'title':[string]    //标签标题，可用当做参数，获取标签下的文章
+        }] //列表
+    ```
+
 ### **Article   博文** <span id="articles"></span>
 
 注意：博文没有分类的功能，取而代之的是`标签`，一篇博文**最多**可有`5个标签`。

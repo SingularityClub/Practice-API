@@ -6,11 +6,12 @@ class PracticeAPI::ArticleApi < Grape::API
     get do
       start = params[:start]||0
       _end = params[:end]||100
+
       if params[:tagname]
         user_id = @space_user.id #解决proc的上下文问题
-        articles, count=Article.paginate_for_tag(params[:tagname], -> { where user_id: user_id }, start, _end)
+        articles, count=Article.paginate_for_tag(params[:tagname], -> { where user_id: user_id }, start.to_i, _end.to_i)
       else
-        articles, count=Article.paginate(@space_user.available_articles, start, _end)
+        articles, count=Article.paginate(@space_user.available_articles, start.to_i, _end.to_i)
       end
 
       paginate_result articles.as_json(include: {tags: {only: :title}, user: {only: [:id, :username, :name]}}), count, start
@@ -91,11 +92,11 @@ class PracticeAPI::ArticleApi < Grape::API
         get do
           error!({message: '不存在此博文！'}.as_json, 404) unless @article
 
-          start = params[:start]
-          _end = params[:end]
-          comments, count = @article.paginate_comments(start, _end)
+          start = params[:start] || 0
+          _end = params[:end] || 100
+          comments, count = @article.paginate_comments(start.to_i, _end.to_i)
                                 .as_json(only: [:id, :content, :up, :down, :created_at, :layer, :name, :enable])
-          paginate_result comments, count
+          paginate_result comments, count, start
         end
 
         desc '用控件获取评论'
