@@ -14,7 +14,7 @@ class Article < ActiveRecord::Base
     _end||=100
     length = _end - start
     length = 100 if length>100
-    return self.all_comments.offset(start).limit(length+1), self.all_comments.count
+    return self.comments.offset(start).limit(length+1), self.comments.count
   end
 
   class << self
