@@ -345,7 +345,7 @@
         }
     ```
 
-- **<a id="edit_article">PUT `/[your name]/articles/:id`   按id修改博文内容</a>**
+- **<a id="edit_article">POST `/[your name]/articles/:id`   按id修改博文内容</a>**
 
     - `需要登录`
 
