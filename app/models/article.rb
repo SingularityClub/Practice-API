@@ -40,10 +40,10 @@ class Article < ActiveRecord::Base
                  .order(created_at: :desc).offset(start).limit(length+1), tag.articles.count
     end
 
-    def post(title, content, tags, user_id)
-      tags= Tag.add_mul_increment(tags)
+    def post(title, content, tags=[], user_id)
+      tags_= Tag.add_mul_increment(tags||[])
       article = Article.create! title: title, content: content, user_id: user_id
-      article.tags << tags
+      article.tags << tags_
       article
     end
   end
