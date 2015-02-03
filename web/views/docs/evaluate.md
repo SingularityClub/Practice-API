@@ -1,6 +1,6 @@
 # 2015年SingularityClub寒假集训评审标准
 
-###**简介：**
+###**简介：** <span id="简介"><span>
 
 集训团体：SingularityClub
 
@@ -16,7 +16,7 @@
 
 课题审阅（首字母排序）：`高万庆`，`娄宇`，`史莉`
 
-###**审阅范围：**
+###**审阅范围：** <span id="审阅范围"><span>
 
 - 前端UI > `史莉`
 
@@ -26,7 +26,7 @@
 
 - 文档质量  > `娄宇`
 
-###**审阅评分标准：**
+###**审阅评分标准：** <span id="审阅评分标准"><span>
 
 - 本次活动是一个全体参与的集训。考虑到不是所有人都是做WEB前端的情况，将评分分为2个部分，扣分与加分。
 
@@ -45,7 +45,7 @@
 - 本次审阅评分规则不提前放出，是要与传统的`为了得分而得分`区别开来。
 
 
-###**审阅评分细节：**
+###**审阅评分细节：** <span id="审阅评分细节"></span>
 
 - **前端UI由`史莉`学姐提供细节：**
 
@@ -84,8 +84,8 @@
     - 内容匮乏，一律扣20分
 
 
-### **分数细节:**
-- UI部分
+### **分数细节:** <span id="分数细节"></span>
+- UI部分<span id="UI部分"></span>
 <table>
     <tr>    <th></th><th>功能性</th><th>创新性</th><th>美观性</th><th>易用性</th><th>得分</th><th>比重</th><th>最终得分</th></tr>
     <tr><td>安娜娜</td><td>35</td><td>11</td><td>12</td><td>15</td><td>73</td><td>0.25</td><td>18.25</td></tr>
@@ -102,7 +102,7 @@
     <tr><td>郑兴</td><td>32</td><td>12</td><td>12</td><td>12</td><td>68</td><td>0.2</td><td>   13.6 </td></tr>
     <tr><td>邹军</td><td>32</td><td>13</td><td>14</td><td>13</td><td>72</td><td>0.25</td><td>  18   </td></tr>
 </table>
-- Javascript前端部分
+- Javascript前端部分<span id="Javascript前端部分"></span>
 <table>
     <tr><th></th><th>业务完整60%</th><th>业务可用性12%</th><th>AngularJS使用基础18%</th><th>业务连锁10%</th><th>得分</th><th>比重</th><th>最终得分</th></tr>
     <tr><td>安娜娜</td><td>60</td><td>9 </td><td>13</td><td>4</td><td>86</td><td>0.45</td><td>38.7 </td></tr>
@@ -120,7 +120,7 @@
     <tr><td>邹军</td><td>60</td><td>9</td><td>17</td><td>6</td><td>92</td><td>0.45</td><td>41.4 </td></tr>
 </table>
 
-- 代码评分部分
+- 代码评分部分<span id="代码评分部分"></span>
 <table>
     <tr><th></th><th>代码规范</th><th>代码逻辑</th><th>可维护性</th><th>得分</th><th>比重</th><th>最终得分</th></tr>
     <tr><td>安娜娜</td><td>-10</td><td></td><td>-10</td><td>80</td><td>0.25</td><td>20</td></tr>
@@ -138,7 +138,7 @@
     <tr><td>邹军  </td><td></td><td></td><td></td><td>100</td><td>0.25</td><td>25</td></tr>
 </table>
 
-- 文档评分部分
+- 文档评分部分<span id="文档评分部分"></span>
 <table>
     <tr><th></th><th>图片排版</th><th>文字排版</th><th>内容匮乏</th><th>得分</th><th>比重</th><th>最终得分</th></tr>
     <tr><td>安娜娜</td><td>-10</td><td>   </td><td>   </td><td>90 </td><td>0.05 </td><td> 4.5 </td></tr>
@@ -156,7 +156,7 @@
     <tr><td>邹军  </td><td>-10</td><td>   </td><td>   </td><td>90</td><td>0.05 </td><td>4.5</td></tr>
 </table>
 
-- 加分成绩部分
+- 加分成绩部分<span id="加分成绩部分"></span>
 <table>
     <tr><th></th><th>常用库使用</th><th>非常用库使用</th><th>路由，指令，服务</th><th>其他加分</th><th>最终得分</th></tr>
     <tr><td>安娜娜</td><td>5</td><td>0</td><td>0</td><td>0</td><td>5</td></tr>
@@ -174,7 +174,7 @@
     <tr><td>邹军  </td><td>3</td><td>0</td><td>2</td><td>2</td><td>7</td></tr>
 </table>
 
-- 各项成绩综合
+- 各项成绩综合<span id="各项成绩综合"></span>
 <table>
     <tr><th></th><th>UI成绩</th><th>Javascript成绩</th><th>代码成绩</th><th>文档成绩</th><th>加分</th><th>最终大成绩</th></tr>
     <tr><td>安娜娜</td><td>18.25</td><td>38.7 </td><td>20   </td><td>4.5 </td><td>5 </td><td>86.45</td></tr>
@@ -191,3 +191,5 @@
     <tr><td>郑兴  </td><td>13.6 </td><td>28.35</td><td>27   </td><td>0   </td><td>7  </td><td>75.95</td></tr>
     <tr><td>邹军  </td><td>18   </td><td>41.4 </td><td>25   </td><td>4.5   </td><td>7  </td><td>95.9</td></tr>
 </table>
+
+<a download href="assets/20150204成绩统计.xls"><i class="fa fa-file-excel-o fa-fw"></i> 电子表格下载</a>
