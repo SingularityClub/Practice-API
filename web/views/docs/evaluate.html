@@ -1,0 +1,15 @@
+<div data-equalizer ng-controller="utilsController">
+    <div class="small-3 columns api-sider" data-equalizer-watch>
+        <div id="doc_nav">
+            <ul class="side-nav">
+            </ul>
+        </div>
+    </div>
+    <div class="small-9 columns" id="doc_content" data-equalizer-watch ng-bind-html="md_html">
+    </div>
+    <div id="scrollToTop" scroll-to-top><i class="fa fa-arrow-up"></i></div>
+</div>
+
+<script>
+    $(document).foundation();
+</script>
