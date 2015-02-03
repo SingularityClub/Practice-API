@@ -85,7 +85,7 @@
 
 
 ### **分数细节:** <span id="分数细节"></span>
-- UI部分<span id="UI部分"></span>
+- UI部分 —— 史莉学姐统计<span id="UI部分"></span>
 <table>
     <tr>    <th></th><th>功能性</th><th>创新性</th><th>美观性</th><th>易用性</th><th>得分</th><th>比重</th><th>最终得分</th></tr>
     <tr><td>安娜娜</td><td>35</td><td>11</td><td>12</td><td>15</td><td>73</td><td>0.25</td><td>18.25</td></tr>
@@ -102,7 +102,7 @@
     <tr><td>郑兴</td><td>32</td><td>12</td><td>12</td><td>12</td><td>68</td><td>0.2</td><td>   13.6 </td></tr>
     <tr><td>邹军</td><td>32</td><td>13</td><td>14</td><td>13</td><td>72</td><td>0.25</td><td>  18   </td></tr>
 </table>
-- Javascript前端部分<span id="Javascript前端部分"></span>
+- Javascript前端部分 —— 高万庆学长统计<span id="Javascript前端部分"></span>
 <table>
     <tr><th></th><th>业务完整60%</th><th>业务可用性12%</th><th>AngularJS使用基础18%</th><th>业务连锁10%</th><th>得分</th><th>比重</th><th>最终得分</th></tr>
     <tr><td>安娜娜</td><td>60</td><td>9 </td><td>13</td><td>4</td><td>86</td><td>0.45</td><td>38.7 </td></tr>
@@ -120,7 +120,7 @@
     <tr><td>邹军</td><td>60</td><td>9</td><td>17</td><td>6</td><td>92</td><td>0.45</td><td>41.4 </td></tr>
 </table>
 
-- 代码评分部分<span id="代码评分部分"></span>
+- 代码评分部分 —— 娄宇学长统计<span id="代码评分部分"></span>
 <table>
     <tr><th></th><th>代码规范</th><th>代码逻辑</th><th>可维护性</th><th>得分</th><th>比重</th><th>最终得分</th></tr>
     <tr><td>安娜娜</td><td>-10</td><td></td><td>-10</td><td>80</td><td>0.25</td><td>20</td></tr>
@@ -138,7 +138,7 @@
     <tr><td>邹军  </td><td></td><td></td><td></td><td>100</td><td>0.25</td><td>25</td></tr>
 </table>
 
-- 文档评分部分<span id="文档评分部分"></span>
+- 文档评分部分 —— 娄宇学长统计<span id="文档评分部分"></span>
 <table>
     <tr><th></th><th>图片排版</th><th>文字排版</th><th>内容匮乏</th><th>得分</th><th>比重</th><th>最终得分</th></tr>
     <tr><td>安娜娜</td><td>-10</td><td>   </td><td>   </td><td>90 </td><td>0.05 </td><td> 4.5 </td></tr>
@@ -156,7 +156,7 @@
     <tr><td>邹军  </td><td>-10</td><td>   </td><td>   </td><td>90</td><td>0.05 </td><td>4.5</td></tr>
 </table>
 
-- 加分成绩部分<span id="加分成绩部分"></span>
+- 加分成绩部分 —— 高万庆学长统计<span id="加分成绩部分"></span>
 <table>
     <tr><th></th><th>常用库使用</th><th>非常用库使用</th><th>路由，指令，服务</th><th>其他加分</th><th>最终得分</th></tr>
     <tr><td>安娜娜</td><td>5</td><td>0</td><td>0</td><td>0</td><td>5</td></tr>
@@ -174,7 +174,7 @@
     <tr><td>邹军  </td><td>3</td><td>0</td><td>2</td><td>2</td><td>7</td></tr>
 </table>
 
-- 各项成绩综合<span id="各项成绩综合"></span>
+- 各项成绩综合 —— 高万庆学长整理<span id="各项成绩综合"></span>
 <table>
     <tr><th></th><th>UI成绩</th><th>Javascript成绩</th><th>代码成绩</th><th>文档成绩</th><th>加分</th><th>最终大成绩</th></tr>
     <tr><td>安娜娜</td><td>18.25</td><td>38.7 </td><td>20   </td><td>4.5 </td><td>5 </td><td>86.45</td></tr>
