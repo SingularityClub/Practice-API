@@ -88,7 +88,7 @@
 - UI部分 —— 史莉学姐统计<span id="UI部分"></span>
 <table>
     <tr>    <th></th><th>功能性</th><th>创新性</th><th>美观性</th><th>易用性</th><th>得分</th><th>比重</th><th>最终得分</th></tr>
-    <tr><td>安娜娜</td><td>35</td><td>11</td><td>12</td><td>15</td><td>73</td><td>0.25</td><td>18.25</td></tr>
+    <tr><td>安娜娜</td><td>35</td><td>11</td><td>12</td><td>15</td><td>73</td><td>0.3</td><td>21.9</td></tr>
     <tr><td>戴宏达</td><td>33</td><td>15</td><td>16</td><td>14</td><td>78</td><td>0.2</td><td> 15.6 </td></tr>
     <tr><td>贾亮亮</td><td>35</td><td>12</td><td>15</td><td>14</td><td>73</td><td>0.2</td><td> 14.6 </td></tr>
     <tr><td>刘君君</td><td>34</td><td>15</td><td>14</td><td>15</td><td>78</td><td>0.3</td><td> 23.4 </td></tr>
@@ -105,7 +105,7 @@
 - Javascript前端部分 —— 高万庆学长统计<span id="Javascript前端部分"></span>
 <table>
     <tr><th></th><th>业务完整60%</th><th>业务可用性12%</th><th>AngularJS使用基础18%</th><th>业务连锁10%</th><th>得分</th><th>比重</th><th>最终得分</th></tr>
-    <tr><td>安娜娜</td><td>60</td><td>9 </td><td>13</td><td>4</td><td>86</td><td>0.45</td><td>38.7 </td></tr>
+    <tr><td>安娜娜</td><td>60</td><td>9 </td><td>13</td><td>4</td><td>86</td><td>0.4</td><td>34.4 </td></tr>
     <tr><td>戴宏达</td><td>60</td><td>9 </td><td>16</td><td>7</td><td>92</td><td>0.35</td><td>32.2 </td></tr>
     <tr><td>贾亮亮</td><td>60</td><td>9 </td><td>16</td><td>4</td><td>89</td><td>0.35</td><td>31.15</td></tr>
     <tr><td>刘君君</td><td>60</td><td>10</td><td>13</td><td>6</td><td>89</td><td>0.4 </td><td>35.6 </td></tr>
@@ -151,7 +151,7 @@
     <tr><td>吴京京</td><td>-10</td><td>-10</td><td>   </td><td>80 </td><td>0.05 </td><td>4</td></tr>
     <tr><td>肖晓艳</td><td>-5 </td><td>-5</td><td>    </td><td>90 </td><td>0.05 </td><td>4.5</td></tr>
     <tr><td>张勇  </td><td>-10</td><td>   </td><td>-20</td><td>70 </td><td>0.05 </td><td>3.5</td></tr>
-    <tr><td>张圆  </td><td>-10</td><td>   </td><td>   </td><td>80</td><td>0.05 </td><td>4</td></tr>
+    <tr><td>张圆  </td><td>-10</td><td>-10</td><td>   </td><td>80</td><td>0.05 </td><td>4</td></tr>
     <tr><td>郑兴  </td><td>   </td><td>   </td><td>   </td><td>0  </td><td>0.15 </td><td>0</td></tr>
     <tr><td>邹军  </td><td>-10</td><td>   </td><td>   </td><td>90</td><td>0.05 </td><td>4.5</td></tr>
 </table>
@@ -177,7 +177,7 @@
 - 各项成绩综合 —— 高万庆学长整理<span id="各项成绩综合"></span>
 <table>
     <tr><th></th><th>UI成绩</th><th>Javascript成绩</th><th>代码成绩</th><th>文档成绩</th><th>加分</th><th>最终大成绩</th></tr>
-    <tr><td>安娜娜</td><td>18.25</td><td>38.7 </td><td>20   </td><td>4.5 </td><td>5 </td><td>86.45</td></tr>
+    <tr><td>安娜娜</td><td>21.9</td><td>34.4 </td><td>20   </td><td>4.5 </td><td>5 </td><td>85.8</td></tr>
     <tr><td>戴宏达</td><td>15.6 </td><td>32.2 </td><td>27   </td><td>10.5</td><td>9 </td><td>94.3</td></tr>
     <tr><td>贾亮亮</td><td>14.6 </td><td>31.15</td><td>24   </td><td>12  </td><td>10 </td><td>91.75</td></tr>
     <tr><td>刘君君</td><td>23.4 </td><td>35.6 </td><td>17.5 </td><td>5   </td><td>4 </td><td>85.5</td></tr>
@@ -192,4 +192,4 @@
     <tr><td>邹军  </td><td>18   </td><td>41.4 </td><td>25   </td><td>4.5   </td><td>7  </td><td>95.9</td></tr>
 </table>
 
-<a download href="assets/20150204成绩统计.xls"><i class="fa fa-file-excel-o fa-fw"></i> 电子表格下载</a>
+<a download href="assets/20150204成绩统计.xlsx"><i class="fa fa-file-excel-o fa-fw"></i> 电子表格下载</a>
