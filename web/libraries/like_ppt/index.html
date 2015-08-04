@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-cn" ng-app="SingularityClub1" ng-controller="impress">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=1024"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>SingularityClub Lesson 1</title>
+    <link href="http://fonts.useso.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic"
+          rel="stylesheet"/>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="bower_components/impress.js/css/impress-demo.css" rel="stylesheet"/>
+    <link href="assets/main.css" rel="stylesheet">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angularjs/angular.min.js"></script>
+    <script src="assets/impressController.js"></script>
+    <script>
+        window.gui = require('nw.gui');
+        $(document).keydown(function (e) {
+            if (e.keyCode == 27)
+                window.gui.App.quit();
+        });
+
+        function openWindow(url) {
+            window.gui.Window.open(url, {fullscreen: false, 'min_width': 800})
+        }
+
+    </script>
+</head>
+<body class="impress-not-supported" onmousewheel="return false;">
+<!--<div class="fallback-message">-->
+<!--<p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified-->
+<!--version of this presentation.</p>-->
+
+<!--<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>-->
+<!--</div>-->
+<div id="impress">
+    <div id="for_lang" class="step slide" data-x="-4000" data-y="-1500">
+        <q>列举你所了解的</q>
+        <q><b>计算机语言</b></q>
+        <q>我来记录</q>
+    </div>
+    <div id="lang_input" class="step slide" data-x="-3000" data-y="-1500">
+        <form>
+            <input class="form-control" ng-list ng-model="langs" data-toggle="tooltip" title="输入你知道的编程语言，用英文逗号隔开"
+                   data-placement="bottom">
+            <q ng-show="langs.length>0" id="lang_list">
+                <span ng-repeat="l in langs" class="lang" data-container="#lang_input" data-toggle="popover"
+                      data-placement="bottom"
+                      data-content="{{langs_dic[l].description}}">{{langs_dic[l].text}}</span></q>
+        </form>
+        <!--<q ng-hide="langs.length>0" style="font-size: 96px">知无不言</q>-->
+        <!--<q ng-hide="langs.length>0" style="font-size: 96px">言无不尽</q>-->
+    </div>
+    <div class="step slide" data-x="-2000" data-y="-1500">
+        <q ng-show="langs.length>0">
+                <span ng-repeat="l in langs" class="lang" data-container="body" data-toggle="popover"
+                      data-placement="bottom"
+                      data-content="{{langs_dic[l].description}}">{{langs_dic[l].text}}</span></q>
+        <q>这里列举了<b>{{langs.length}}</b>个计算机语言，请按照下面的条件筛选。</q>
+    </div>
+    <div class="step slide" data-x="-1000" data-y="-1500">
+        <q>首先请留下可以做桌面程序，还能跨平台的语言</q>
+        <q> <span ng-repeat="l in langs" class="lang del" title="{{langs_dic[l].description}}" ng-click="remove(l)">{{langs_dic[l].text}}</span></q>
+    </div>
+    <div class="step slide" data-x="0" data-y="-1500">
+        <q>然后帮我剔除非动态语言</q>
+        <q> <span ng-repeat="l in langs" class="lang del" title="{{langs_dic[l].description}}" ng-click="remove(l)">{{langs_dic[l].text}}</span></q>
+    </div>
+    <div class="step slide" data-x="1000" data-y="-1500">
+        <q>最后，浏览器能直接运行的语言</q>
+        <q> <span ng-repeat="l in langs" class="lang del" title="{{langs_dic[l].description}}" ng-click="remove(l)">{{langs_dic[l].text}}</span></q>
+    </div>
+    <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
+        <span class="try">Then you should try</span>
+
+        <h1>Javascript<sup></sup></h1>
+        <span class="footnote"><sup>*</sup>Powered by Tavern</span>
+    </div>
+    <div class="step" data-x="1850" data-y="3000" data-rotate="90" data-scale="5" data-rotate-x="-90">
+        <p><b style="font-size: 64px">谈谈JS</b> <br/>
+            前面我们了解到，它是一个 <a>动态</a> <a>跨平台</a>且<a>浏览器能直接运行</a>的语言</p>
+
+        <p style="text-align: center">你起初从哪里了解到的?</p>
+
+        <p style="text-align: center">给你的感觉如何？</p>
+    </div>
+
+    <div id="big" class="step" data-x="4500" data-y="2100" data-rotate="180" data-scale="6">
+        <p>轻便 <b>简单</b> <span class="thoughts">易学</span></p>
+    </div>
+    <div class="step" data-x="2825" data-y="2325" data-z="-3000" data-scale="1" data-rotate-x="0">
+        <q><b style="font-size: 64px">想想</b></q>
+
+        <p>既然JS如此简单，浏览器都能直接运行， 它真的只能做Web交互吗？</p>
+
+        <p>在你印象中它还能做些什么？</p>
+    </div>
+    <div class="step" data-x="2825" data-y="2325" data-z="-3000" data-scale="1" data-rotate-y="90">
+        <q style="font-size:72px;"><b>Javascript 还能做什么</b></q>
+    </div>
+    <div class="step" data-x="-2500" data-y="2050" data-scale="8" data-rotate-x="0">
+        <q style="font-size: 72px;"><b>游戏</b></q>
+
+        <div class="img_container">
+            <div onclick="openWindow('http://browserquest.mozilla.org/')">
+                <img src="assets/browserquest.png">
+
+                <div>
+                    <span>BrowserQuest</span>
+                </div>
+            </div>
+            <div onclick="openWindow('http://www.findyourwaytooz.com/')">
+                <img src="assets/disney.png">
+
+                <div>
+                    <span>魔境仙踪（3D）</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="step" data-x="-2500" data-y="2050" data-scale="8" data-rotate-x="90">
+        <q><b>服务器，后端客户端（介绍）</b></q>
+
+        <div class="img_container">
+            <div>
+                <img src="assets/node.png"
+                     onclick="openWindow('http://www.nodejs.org/')">
+
+                <div>
+                    <span onclick="openWindow('http://www.nodejs.org/')">Node.js</span>
+                </div>
+
+                <img src="assets/node-webkit.png"
+                     onclick="openWindow('https://github.com/rogerwang/node-webkit')">
+
+                <div>
+                    <span onclick="openWindow('https://github.com/rogerwang/node-webkit')">Node-Webkit</span>
+                </div>
+            </div>
+            <div style="float: right;">
+                <img src="assets/express.png"
+                     onclick="openWindow('http://expressjs.com/')">
+
+                <div>
+                    <span onclick="openWindow('http://expressjs.com/')">Express.js</span>
+                </div>
+
+
+                <img src="assets/atom.png" onclick="openWindow('http://atom.io/')">
+
+                <div>
+                    <span onclick="openWindow('http://atom.io/')">Atom Editor</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step" data-x="6700" data-y="-300" data-scale="6">
+        <q><b style="font-size: 72px">猜猜</b></q>
+
+        <p>腾讯QQ PC客户端是用的什么技术？那QQ移动客户端呢？</p>
+
+        <p style="text-align:center"><a
+                onclick="openWindow('http://impd.tencent.com/?p=35')"
+                target="_blank">官方博客</a></p>
+    </div>
+    <div class="step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10"
+         data-scale="2">
+        <p style="font-size: 108px; text-align: center">最后</p>
+
+        <p style="text-align: center">大家觉得这个课件做得如何</p>
+    </div>
+    <div id="overview" class="step" data-x="1000" data-y="1500" data-scale="13">
+    </div>
+
+    <div class="step" data-x="1000" data-y="1500" data-z="-5000">
+        <p>Js优秀库</p>
+
+        <p><a>JQuery</a> <a>angular</a> <a onclick="openWindow('http://d3js.org/')">d3</a>
+            <a>impress.js</a>
+            <a onclick="openWindow('http://lab.hakim.se/reveal-js/')">reveal.js</a>
+            <a onclick="openWindow('http://www.chartjs.org/')">chart.js</a>
+            <a onclick="openWindow('http://echarts.baidu.com/doc/example.html')">echarts</a>
+        </p>
+
+        <p>
+            <a onclick="openWindow('https://github.com/search?l=JavaScript&o=desc&q=stars%3A%3E1&s=stars&type=Repositories')">More...</a>
+        </p>
+    </div>
+    <div class="step" data-x="1000" data-y="1500" data-z="-8000">
+        <p>作业</p>
+
+        <p>学习Json格式：<a onclick="openWindow('http://www.w3school.com.cn/json/index.asp')">Json</a></p>
+    </div>
+
+</div>
+<div class="hint">
+    <p>用空格或方向键来浏览</p>
+</div>
+<script>
+    if ("ontouchstart" in document.documentElement) {
+        document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+    }
+</script>
+<script src="bower_components/impress.js/js/impress.js"></script>
+<script>impress().init();</script>
+</body>
+</html>

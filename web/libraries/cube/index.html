@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="assets/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/impress.js/css/impress-demo.css">
+
+    <style>
+        .icon {
+            font-size: 86px;
+        }
+
+        .dark {
+            color: #444;
+            transition: color 1s;
+            margin: 10px 0px;
+            display: inline-block;
+        }
+
+        .step.cube {
+            box-shadow: 0 0 50px #888;
+            height: 600px;
+            width: 600px;
+            color: #fff;
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            background: rgba(150, 150, 150, 0.9);
+            border-radius: 10px;
+            font-size: 36px;
+            text-shadow: 0 0 5px #333;
+            text-align: center;
+        }
+
+        path {
+            fill-rule: evenodd;
+            stroke: #333;
+            stroke-width: 2px;
+        }
+
+        .sun path {
+            fill: #6baed6;
+        }
+
+        .planet path {
+            fill: #9ecae1;
+        }
+
+        .annulus path {
+            fill: #c6dbef;
+        }
+    </style>
+</head>
+<body>
+<div id="impress">
+    <div class="step cube">
+        <img src="assets/logo.png">
+    </div>
+    <div class="step cube" data-x="500" data-z="-500" data-rotate-y="90">
+        <p><b>软件界目前最流行的技术?</b><br><br>
+            <i class="fa fa-apple fa-fw icon"></i><i class="fa fa-android fa-fw icon"></i><i
+                    class="fa fa-windows fa-fw icon"></i>
+        </p>
+    </div>
+    <div class="step cube" data-z="-1000" data-rotate-y="180">
+        <img src="assets/layers.jpg" width="550">
+    </div>
+    <div class="step cube" data-y="-500" data-z="-500" data-rotate-x="90">
+        <i class="fa fa-youtube fa-fw icon dark"></i>
+        <i class="fa fa-qq fa-fw icon dark"></i>
+        <i class="fa fa-weixin fa-fw icon dark"></i>
+        <i class="fa fa-renren fa-fw icon dark"></i>
+        <br>
+        <i class="fa fa-twitter fa-fw icon dark"></i>
+        <i class="fa fa-wordpress fa-fw icon dark"></i>
+        <i class="fa fa-tencent-weibo fa-fw icon dark"></i>
+        <i class="fa fa-skype fa-fw icon dark"></i>
+        <br>
+        <i class="fa fa-dropbox fa-fw icon dark"></i>
+        <i class="fa fa-paypal fa-fw icon dark"></i>
+        <i class="fa fa-yahoo fa-fw icon dark"></i>
+        <i class="fa fa-stack-overflow fa-fw icon dark"></i>
+        <br>
+        <i class="fa fa-github fa-fw icon dark"></i>
+        <i class="fa fa-tumblr fa-fw icon dark"></i>
+        <i class="fa fa-weibo fa-fw icon dark"></i>
+        <i class="fa fa-google fa-fw icon dark"></i>
+    </div>
+    <div class="step cube" data-x="-500" data-z="-500" data-rotate-y="-90">
+        <i class="fa fa-windows icon fa-fw"></i>
+        <i class="fa fa-linux icon fa-fw"></i>
+        <i class="fa fa-apple icon fa-fw"></i>
+        <i class="fa fa-android icon fa-fw"></i>
+        <br>
+        <br>
+        <i class="fa fa-arrow-down icon"></i>
+        <br>
+        <br>
+        <i class="fa fa-html5 icon" style="position: relative; left:-5px"></i>
+    </div>
+    <div class="step cube" data-y="500" data-z="-500" data-rotate-x="-90">
+        腾讯QQ的UI，<a href="http://impd.tencent.com/?p=35" target="_blank">官方博客</a><br><br>
+        <img src="assets/officer_blog.png" width="500">
+    </div>
+
+    <div class="step cog" data-x="2000">
+        <q><a href="round.html" target="_blank">图形动画</a></q><br><br>
+        <img src="assets/round.png" width="700">
+    </div>
+    <div class="step" data-x="1000" data-z="1500" data-y="500" data-rotate-x="90">
+        <q><a href="cog.html" target="_blank">数学驱动动画</a></q><br><br>
+        <img src="assets/cog.png" width="700">
+    </div>
+    <div class="step" data-x="1500" data-y="-1000" data-rotate-y="60" data-z="-1500">
+        <q><a href="directed.html" target="_blank">力学驱动动画</a></q><br><br>
+        <img src="assets/directed.png" width="600">
+    </div>
+    <div class="step" data-scale="2" data-x="1000" data-z="3000"></div>
+    <div class="step" data-z="-3000" data-x="1000">
+        <img src="assets/template.jpg" height="700" style="position: relative; right:-150px">
+    </div>
+</div>
+
+<script src="assets/impress.js/js/impress.js"></script>
+<script src="assets/jquery/dist/jquery.min.js"></script>
+<script src="assets/d3/d3.min.js"></script>
+<script>
+    $(function () {
+        setInterval(function () {
+            var icons = $(".active i.icon.dark");
+            var index = parseInt(Math.random() * icons.length + 1) % icons.length;
+            var color_index = parseInt(Math.random() * 2 + 1) % 2;
+            $(icons[index]).css({color: ['#444', '#ddd'][color_index]})
+        }, 1000);
+
+        impress().init();
+
+    })
+
+    function openWindow(url) {
+        window.gui.Window.open(url, {fullscreen: false, 'min_width': 800})
+    }
+</script>
+</body>
+</html>

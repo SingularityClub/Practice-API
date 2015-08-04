@@ -1,0 +1,71 @@
+q {
+    text-align: center
+}
+
+#for_lang q {
+    font-size: 72px;
+    margin-top: 50px;
+}
+
+::-webkit-scrollbar-track {
+    background: #aaa
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #fff;
+}
+
+span.lang {
+    padding: 5px 10px;
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    background: #eee;
+    cursor: pointer;
+}
+
+span.lang.del:hover {
+    background: #a94442;
+    color: #fff
+}
+
+div.step.slide {
+    overflow: auto
+}
+
+#lang_input form q {
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none !important;
+    cursor: pointer
+}
+
+.img_container {
+    margin-top: 30px;
+}
+
+.img_container > div {
+    float: left;
+    width: 400px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.img_container > div + div {
+    float: right;
+    width: 400px;
+}
+
+.img_container > div img {
+    width: 400px;
+    cursor: pointer
+}
+
+.img_container span {
+    cursor: pointer
+}
