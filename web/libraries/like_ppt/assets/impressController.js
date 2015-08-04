@@ -1,6 +1,6 @@
-process.on('uncaughtException', function (e) {
-    console.error(e.message)
-});
+//process.on('uncaughtException', function (e) {
+//    console.error(e.message)
+//});
 Array.prototype.remove = function (obj) {
     if (typeof obj == "number") {
         return this.splice(obj, 1);
